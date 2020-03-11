@@ -9,7 +9,7 @@ public class Goods extends CashierConfig {
     public Response getCategorys(){
         return given().
                 post("/v1/product/shop/category/query").
-                then().log().all().
+                then().
                 extract().response();
     }
 

@@ -1,0 +1,101 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1583912804.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "ableConsumePoint",
+    "ableLevel",
+    "ablePayPasswd",
+    "ablePoint",
+    "canRefund",
+    "openVip",
+    "queryVip",
+    "chargeVip",
+    "editVip"
+  ],
+  "properties": {
+    "ableConsumePoint": {
+      "$id": "#root/ableConsumePoint",
+      "title": "Ableconsumepoint",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "ableLevel": {
+      "$id": "#root/ableLevel",
+      "title": "Ablelevel",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "ablePayPasswd": {
+      "$id": "#root/ablePayPasswd",
+      "title": "Ablepaypasswd",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "ablePoint": {
+      "$id": "#root/ablePoint",
+      "title": "Ablepoint",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "canRefund": {
+      "$id": "#root/canRefund",
+      "title": "Canrefund",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "openVip": {
+      "$id": "#root/openVip",
+      "title": "Openvip",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "queryVip": {
+      "$id": "#root/queryVip",
+      "title": "Queryvip",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "chargeVip": {
+      "$id": "#root/chargeVip",
+      "title": "Chargevip",
+      "type": "boolean",
+      "examples": [
+        true
+      ],
+      "default": true
+    },
+    "editVip": {
+      "$id": "#root/editVip",
+      "title": "Editvip",
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "default": true
+    }
+  }
+}

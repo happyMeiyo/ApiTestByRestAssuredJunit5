@@ -12,9 +12,9 @@ public class UserLogin extends CashierConfig{
                 formParam("merchantCode", merchantCode).
                 formParam("username", username).
                 formParam("password", password).
-               when().log().all().
+               when().
                 post("/v1/passport/login").
-               then().log().all().extract().response();
+               then().extract().response();
     }
 
     public Response userLoginSuccess(){

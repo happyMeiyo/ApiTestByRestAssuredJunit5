@@ -17,6 +17,7 @@
         <allure-maven.version>2.10.0</allure-maven.version>
         <hamcrest-core.version>2.2</hamcrest-core.version>
         <jackson-dataformat-yaml.version>2.10.1</jackson-dataformat-yaml.version>
+        <json-schema-validator.version>4.1.2</json-schema-validator.version>
 
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -78,7 +79,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
-            <version>4.1.2</version>
+            <version>${json-schema-validator.version}</version>
             <scope>test</scope>
         </dependency>
 

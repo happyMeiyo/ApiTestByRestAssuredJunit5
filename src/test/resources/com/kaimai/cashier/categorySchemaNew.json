@@ -1,0 +1,249 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1583897119.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "data",
+    "result"
+  ],
+  "properties": {
+    "data": {
+      "$id": "#root/data",
+      "title": "Data",
+      "type": "array",
+      "default": [],
+      "items":{
+        "$id": "#root/data/items",
+        "title": "Items",
+        "type": "object",
+        "properties": {
+          "categoryName": {
+            "$id": "#root/data/items/categoryName",
+            "title": "Categoryname",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "称重商品jj"
+            ],
+            "pattern": "^.*$"
+          },
+          "categoryType": {
+            "$id": "#root/data/items/categoryType",
+            "title": "Categorytype",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "ONLY_CATEGORY"
+            ],
+            "pattern": "^.*$"
+          },
+          "childCategoryList": {
+            "$id": "#root/data/items/childCategoryList",
+            "title": "Childcategorylist",
+            "type": "array",
+            "default": [],
+            "items":{
+              "$id": "#root/data/items/childCategoryList/items",
+              "title": "Items",
+              "type": "object",
+              "properties": {
+                "categoryName": {
+                  "$id": "#root/data/items/childCategoryList/items/categoryName",
+                  "title": "Categoryname",
+                  "type": "string",
+                  "default": "",
+                  "examples": [
+                    "其他"
+                  ],
+                  "pattern": "^.*$"
+                },
+                "childCategoryList": {
+                  "$id": "#root/data/items/childCategoryList/items/childCategoryList",
+                  "title": "Childcategorylist",
+                  "type": "array",
+                  "default": []
+                },
+                "childProductNum": {
+                  "$id": "#root/data/items/childCategoryList/items/childProductNum",
+                  "title": "Childproductnum",
+                  "type": "integer",
+                  "examples": [
+                    0
+                  ],
+                  "default": 0
+                },
+                "isMallOnline": {
+                  "$id": "#root/data/items/childCategoryList/items/isMallOnline",
+                  "title": "Ismallonline",
+                  "type": "string",
+                  "default": "",
+                  "examples": [
+                    "N"
+                  ],
+                  "pattern": "^.*$"
+                },
+                "isOnline": {
+                  "$id": "#root/data/items/childCategoryList/items/isOnline",
+                  "title": "Isonline",
+                  "type": "string",
+                  "default": "",
+                  "examples": [
+                    "Y"
+                  ],
+                  "pattern": "^.*$"
+                },
+                "merchantCode": {
+                  "$id": "#root/data/items/childCategoryList/items/merchantCode",
+                  "title": "Merchantcode",
+                  "type": "string",
+                  "default": "",
+                  "examples": [
+                    "100457"
+                  ],
+                  "pattern": "^.*$"
+                },
+                "parentId": {
+                  "$id": "#root/data/items/childCategoryList/items/parentId",
+                  "title": "Parentid",
+                  "type": "integer",
+                  "examples": [
+                    2565
+                  ],
+                  "default": 0
+                },
+                "productCategoryId": {
+                  "$id": "#root/data/items/childCategoryList/items/productCategoryId",
+                  "title": "Productcategoryid",
+                  "type": "integer",
+                  "examples": [
+                    2566
+                  ],
+                  "default": 0
+                },
+                "status": {
+                  "$id": "#root/data/items/childCategoryList/items/status",
+                  "title": "Status",
+                  "type": "string",
+                  "default": "",
+                  "examples": [
+                    "NORMAL"
+                  ],
+                  "pattern": "^.*$"
+                },
+                "weight": {
+                  "$id": "#root/data/items/childCategoryList/items/weight",
+                  "title": "Weight",
+                  "type": "integer",
+                  "examples": [
+                    99999
+                  ],
+                  "default": 0
+                }
+              }
+            }
+
+          },
+          "childProductNum": {
+            "$id": "#root/data/items/childProductNum",
+            "title": "Childproductnum",
+            "type": "integer",
+            "examples": [
+              0
+            ],
+            "default": 0
+          },
+          "isMallOnline": {
+            "$id": "#root/data/items/isMallOnline",
+            "title": "Ismallonline",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "N"
+            ],
+            "pattern": "^.*$"
+          },
+          "isOnline": {
+            "$id": "#root/data/items/isOnline",
+            "title": "Isonline",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "Y"
+            ],
+            "pattern": "^.*$"
+          },
+          "merchantCode": {
+            "$id": "#root/data/items/merchantCode",
+            "title": "Merchantcode",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "100457"
+            ],
+            "pattern": "^.*$"
+          },
+          "parentId": {
+            "$id": "#root/data/items/parentId",
+            "title": "Parentid",
+            "type": "integer",
+            "examples": [
+              0
+            ],
+            "default": 0
+          },
+          "productCategoryId": {
+            "$id": "#root/data/items/productCategoryId",
+            "title": "Productcategoryid",
+            "type": "integer",
+            "examples": [
+              2565
+            ],
+            "default": 0
+          },
+          "status": {
+            "$id": "#root/data/items/status",
+            "title": "Status",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "NORMAL"
+            ],
+            "pattern": "^.*$"
+          },
+          "weight": {
+            "$id": "#root/data/items/weight",
+            "title": "Weight",
+            "type": "integer",
+            "examples": [
+              99999
+            ],
+            "default": 0
+          }
+        }
+      }
+
+    },
+    "result": {
+      "$id": "#root/result",
+      "title": "Result",
+      "type": "object",
+      "required": [
+        "success"
+      ],
+      "properties": {
+        "success": {
+          "$id": "#root/result/success",
+          "title": "Success",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        }
+      }
+    }
+
+  }
+}
