@@ -47,24 +47,24 @@ public class TestVipApp extends TestUser {
         }
     }
 
-    @ParameterizedTest
-    @DisplayName("获取会员列表失败")
+    @ParameterizedTest(name="查询会员异常，会员码为空")
+    @DisplayName("获取会员列表异常")
     @Description("测试获取会员列表异常情况")
     @NullAndEmptySource
     void testGetListOfVipExp(String vipCode) {
         vip.getListOfVip(vipCode).then().body("result.success", equalTo(false));
     }
 
-    @ParameterizedTest
-    @DisplayName("获取会员详情失败")
-    @Description("测试获取会员详情失败情况")
+    @ParameterizedTest(name="查询会员:{0}失败")
+    @DisplayName("获取会员列表失败")
+    @Description("测试获取会员列表失败情况")
     @ValueSource(strings = { "98765432101" })
-    void testGetDetailOfVipFailure(String vipCardNo) {
-        vip.getDetailOfVip(vipCardNo).then().body("result.success", equalTo(true)).
-                                             body("data", equalTo(null));
+    void testGetListOfVipFailure(String vipCardNo) {
+        vip.getListOfVip(vipCardNo).then().body("result.success", equalTo(true)).
+                                             body("data", hasSize(0));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="查询会员:{0}成功")
     @DisplayName("获取会员列表成功")
     @Description("测试获取会员列表正常情况")
     @MethodSource("getVipCode")
@@ -77,7 +77,7 @@ public class TestVipApp extends TestUser {
         return Stream.of(vip.getVipPhone(), vip.getVipCardNo());
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="获取会员详情，会员卡号为空")
     @DisplayName("获取会员详情失败")
     @Description("测试获取会员详情异常情况")
     @NullAndEmptySource
@@ -85,11 +85,20 @@ public class TestVipApp extends TestUser {
         vip.getDetailOfVip(vipCardNo).then().body("result.success", equalTo(false));
     }
 
+    @ParameterizedTest(name="查询会员:{0}失败")
+    @DisplayName("获取会员列表失败")
+    @Description("测试获取会员列表失败情况")
+    @ValueSource(strings = { "98765432101" })
+    void testGetDetailOfVipFailure(String vipCardNo) {
+        vip.getDetailOfVip(vipCardNo).then().body("result.success", equalTo(true)).
+                body("data", equalTo(null));
+    }
+
     static Stream<String> getVipCardNo() {
         return Stream.of(vip.getVipCardNo());
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="获取会员{0}的详情")
     @DisplayName("获取会员详情成功")
     @Description("测试获取详情列表正常情况")
     @MethodSource("getVipCardNo")
@@ -118,7 +127,7 @@ public class TestVipApp extends TestUser {
                 body("data[0].vipPhone", startsWith(vip.getVipPhone().substring(0, 6)));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="获取券，会员卡号为空")
     @DisplayName("获取会员券列表异常")
     @Description("测试获取会员券列表异常")
     @NullAndEmptySource
@@ -133,7 +142,7 @@ public class TestVipApp extends TestUser {
         vip.getListOfCoupon(vip.getVipCardNo()).then().body("result.success", equalTo(true));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="获取积分，会员卡号为空")
     @DisplayName("获取会员积分列表异常")
     @Description("测试获取会员积分列表异常")
     @NullAndEmptySource
@@ -154,7 +163,7 @@ public class TestVipApp extends TestUser {
                        body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/pointOfVipSchema.json"));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="绑定实体卡号为空")
     @DisplayName("绑定实体卡异常")
     @Description("测试绑定实体卡异常")
     @NullAndEmptySource
@@ -162,8 +171,8 @@ public class TestVipApp extends TestUser {
         vip.bindCardForVip(vip.getVipCardNo(), cardNo).then().body("result.success", equalTo(false));
     }
 
-    @ParameterizedTest
     @DisplayName("绑定解绑实体卡成功")
+    @ParameterizedTest(name="绑定实体卡号：{0}")
     @Description("测试绑定解绑实体卡成功")
     @ValueSource(strings = { "98765432101" })
     void testBindCardForVip(String cardNo){

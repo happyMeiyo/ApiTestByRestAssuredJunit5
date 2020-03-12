@@ -21,7 +21,7 @@ public class TestUserLogin {
         ul.userLogout().then().body("result.success", equalTo(true));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="用户登录失败")
     @Description("测试用户登录失败")
     @DisplayName("用户登录失败")
     @CsvSource({
