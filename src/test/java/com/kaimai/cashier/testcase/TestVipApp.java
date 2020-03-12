@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.stream.Stream;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.*;
 
 @DisplayName("测试会员相关业务")
@@ -115,7 +116,63 @@ public class TestVipApp extends TestUser {
 
         vip.getListOfVip(vip.getVipPhone()).then().body("data[0].vipName", equalTo(vip.getVipName())).
                 body("data[0].vipPhone", startsWith(vip.getVipPhone().substring(0, 6)));
+    }
 
+    @ParameterizedTest
+    @DisplayName("获取会员券列表异常")
+    @Description("测试获取会员券列表异常")
+    @NullAndEmptySource
+    void testListOfCouponExp(String vipCardNo){
+        vip.getListOfCoupon(vipCardNo).then().body("result.success", equalTo(false));
+    }
+
+    @Test
+    @DisplayName("获取会员券列表成功")
+    @Description("测试获取会员券列表")
+    void testListOfCoupon(){
+        vip.getListOfCoupon(vip.getVipCardNo()).then().body("result.success", equalTo(true));
+    }
+
+    @ParameterizedTest
+    @DisplayName("获取会员积分列表异常")
+    @Description("测试获取会员积分列表异常")
+    @NullAndEmptySource
+    void testListOfPointExp(String vipCardNo){
+        Integer pageNumber = 1;
+        Integer pageSize = 30;
+        vip.getListOfPoint(vipCardNo, pageNumber, pageSize).then().body("result.success", equalTo(false));
+    }
+
+    @Test
+    @DisplayName("获取会员积分列表成功")
+    @Description("测试获取会员积分列表")
+    void testListOfPoint(){
+        Integer pageNumber = 1;
+        Integer pageSize = 30;
+        vip.getListOfPoint(vip.getVipCardNo(), pageNumber, pageSize).
+                then().body("result.success", equalTo(true)).
+                       body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/pointOfVipSchema.json"));
+    }
+
+    @ParameterizedTest
+    @DisplayName("绑定实体卡异常")
+    @Description("测试绑定实体卡异常")
+    @NullAndEmptySource
+    void testBindCardForVipExp(String cardNo){
+        vip.bindCardForVip(vip.getVipCardNo(), cardNo).then().body("result.success", equalTo(false));
+    }
+
+    @ParameterizedTest
+    @DisplayName("绑定解绑实体卡成功")
+    @Description("测试绑定解绑实体卡成功")
+    @ValueSource(strings = { "98765432101" })
+    void testBindCardForVip(String cardNo){
+        vip.bindCardForVip(vip.getVipCardNo(), cardNo).then().body("result.success", equalTo(true));
+        vip.getDetailOfVip(vip.getVipCardNo()).then().body("data.physicalCardNo", equalTo(cardNo));
+
+        vip.unbindCardForVip(vip.getVipCardNo()).
+                then().body("result.success", equalTo(true));
+        vip.getDetailOfVip(vip.getVipCardNo()).then().body("data", not(hasKey("physicalCardNo")));
     }
 }
 

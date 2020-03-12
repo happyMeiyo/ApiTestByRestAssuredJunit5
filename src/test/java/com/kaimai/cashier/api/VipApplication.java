@@ -3,6 +3,8 @@ package com.kaimai.cashier.api;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+import io.restassured.specification.ResponseSpecification;
+import org.hamcrest.Condition;
 
 import static io.restassured.RestAssured.given;
 
@@ -66,4 +68,42 @@ public class VipApplication {
                 extract().response();
     }
 
+    @Step("获取券列表")
+    public Response getListOfCoupon(String vipCardNo) {
+        return given().log().all().
+                formParam("vipCardNo", vipCardNo).
+               post("/v1/vip/coupon/list").
+                then().log().all().
+                extract().response();
+    }
+
+    @Step("获取积分列表")
+    public Response getListOfPoint(String vipCardNo, Integer pageNumber, Integer pageSize) {
+        return given().log().all().
+                formParam("vipCardNo", vipCardNo).
+                formParam("pageNumber", pageNumber).
+                formParam("pageSize", pageSize).
+               post("/v1/vip/point/record/list").
+                then().log().all().
+                extract().response();
+    }
+
+    @Step("解绑实体卡")
+    public Response unbindCardForVip(String vipCardNo) {
+        return given().log().all().
+                formParam("vipCardNo", vipCardNo).
+               post("/v1/vip/physicalcard/unbind").
+                then().log().all().
+                extract().response();
+    }
+
+    @Step("绑定实体卡")
+    public Response bindCardForVip(String vipCardNo, String cardNo) {
+        return given().log().all().
+                formParam("vipCardNo", vipCardNo).
+                formParam("physicalCardNo", cardNo).
+               post("/v1/vip/physicalcard/bind").
+                then().log().all().
+                extract().response();
+    }
 }

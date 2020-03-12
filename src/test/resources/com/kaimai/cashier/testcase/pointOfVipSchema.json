@@ -1,0 +1,184 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1584002102.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "data",
+    "result"
+  ],
+  "properties": {
+    "data": {
+      "$id": "#root/data",
+      "title": "Data",
+      "type": "object",
+      "required": [
+        "page",
+        "pageData",
+        "size",
+        "totalCount",
+        "totalPage"
+      ],
+      "properties": {
+        "page": {
+          "$id": "#root/data/page",
+          "title": "Page",
+          "type": "integer",
+          "examples": [
+            1
+          ],
+          "default": 0
+        },
+        "pageData": {
+          "$id": "#root/data/pageData",
+          "title": "Pagedata",
+          "type": "array",
+          "default": [],
+          "items":{
+            "$id": "#root/data/pageData/items",
+            "title": "Items",
+            "type": "object",
+            "required": [
+              "cardNo",
+              "getPoint",
+              "id",
+              "pointChannel",
+              "pointDesc",
+              "pointNum",
+              "pointsUpdateTime",
+              "refBusinessNo"
+            ],
+            "properties": {
+              "cardNo": {
+                "$id": "#root/data/pageData/items/cardNo",
+                "title": "Cardno",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "201910315792154"
+                ],
+                "pattern": "^.*$"
+              },
+              "getPoint": {
+                "$id": "#root/data/pageData/items/getPoint",
+                "title": "Getpoint",
+                "type": "boolean",
+                "examples": [
+                  true
+                ],
+                "default": true
+              },
+              "id": {
+                "$id": "#root/data/pageData/items/id",
+                "title": "Id",
+                "type": "integer",
+                "examples": [
+                  2296
+                ],
+                "default": 0
+              },
+              "pointChannel": {
+                "$id": "#root/data/pageData/items/pointChannel",
+                "title": "Pointchannel",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "CHARGE"
+                ],
+                "pattern": "^.*$"
+              },
+              "pointDesc": {
+                "$id": "#root/data/pageData/items/pointDesc",
+                "title": "Pointdesc",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "充值积分奖励"
+                ],
+                "pattern": "^.*$"
+              },
+              "pointNum": {
+                "$id": "#root/data/pageData/items/pointNum",
+                "title": "Pointnum",
+                "type": "integer",
+                "examples": [
+                  10
+                ],
+                "default": 0
+              },
+              "pointsUpdateTime": {
+                "$id": "#root/data/pageData/items/pointsUpdateTime",
+                "title": "Pointsupdatetime",
+                "type": "integer",
+                "examples": [
+                  1583229213000
+                ],
+                "default": 0
+              },
+              "refBusinessNo": {
+                "$id": "#root/data/pageData/items/refBusinessNo",
+                "title": "Refbusinessno",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "VIP2003031753336954731248"
+                ],
+                "pattern": "^.*$"
+              }
+            }
+          }
+
+        },
+        "size": {
+          "$id": "#root/data/size",
+          "title": "Size",
+          "type": "integer",
+          "examples": [
+            20
+          ],
+          "default": 0
+        },
+        "totalCount": {
+          "$id": "#root/data/totalCount",
+          "title": "Totalcount",
+          "type": "integer",
+          "examples": [
+            39
+          ],
+          "default": 0
+        },
+        "totalPage": {
+          "$id": "#root/data/totalPage",
+          "title": "Totalpage",
+          "type": "integer",
+          "examples": [
+            2
+          ],
+          "default": 0
+        }
+      }
+    }
+  ,
+    "result": {
+      "$id": "#root/result",
+      "title": "Result",
+      "type": "object",
+      "required": [
+        "success"
+      ],
+      "properties": {
+        "success": {
+          "$id": "#root/result/success",
+          "title": "Success",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        }
+      }
+    }
+
+  }
+}
