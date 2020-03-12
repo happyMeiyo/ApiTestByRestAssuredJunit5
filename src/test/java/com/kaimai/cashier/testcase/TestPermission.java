@@ -4,9 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kaimai.cashier.api.Permission;
 import io.qameta.allure.Description;
-import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +11,6 @@ import java.util.Map;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 
 public class TestPermission extends TestUser{
 
@@ -28,7 +24,7 @@ public class TestPermission extends TestUser{
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(permission);
 
-        assertThat("类目返回数据格式正确", json, matchesJsonSchemaInClasspath("com/kaimai/cashier/permissionSchema.json"));
+        assertThat("类目返回数据格式正确", json, matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/permissionSchema.json"));
 
     }
 }

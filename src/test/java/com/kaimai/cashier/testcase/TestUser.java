@@ -39,7 +39,7 @@ public class TestUser {
             //响应消息的基础判断
             ResponseSpecBuilder respBuilder = new ResponseSpecBuilder();
             respBuilder.expectStatusCode(200);
-            respBuilder.expectBody("result.success", equalTo(true));
+//            respBuilder.expectBody("result.success", equalTo(true));
             RestAssured.responseSpecification = respBuilder.build();
         }
     }

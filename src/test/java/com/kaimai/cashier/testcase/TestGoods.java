@@ -23,7 +23,7 @@ public class TestGoods extends TestUser{
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(category);
 
-        assertThat("类目返回数据格式正确", json, matchesJsonSchemaInClasspath("com/kaimai/cashier/categorySchema.json"));
+        assertThat("类目返回数据格式正确", json, matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/categorySchema.json"));
         //gds.getCategorys().then().body(matchesJsonSchemaInClasspath("com/kaimai/cashier/categorySchemaNew.json"));
     }
 }

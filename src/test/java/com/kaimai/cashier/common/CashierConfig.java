@@ -1,11 +1,13 @@
 package com.kaimai.cashier.common;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.kaimai.util.ReadYaml;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.Cookie;
-import org.omg.PortableServer.THREAD_POLICY_ID;
 
+import java.io.InputStream;
 import java.util.HashMap;
 
 public class CashierConfig {
@@ -19,8 +21,15 @@ public class CashierConfig {
     }
 
     public CashierConfig(){
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        TypeReference<HashMap<String, Object>> typeRef =
+                new TypeReference<HashMap<String, Object>>() {
+                };
+
         try {
-            HashMap<String, Object> envInfo = ReadYaml.readDataFromYaml("/enviroment.yml");
+            InputStream src = CashierConfig.class.getResourceAsStream("enviroment.yml");
+            HashMap<String, Object> envInfo = mapper.readValue(src,typeRef);
+
             RestAssured.baseURI = envInfo.getOrDefault("URI", "http://gw3.daily.heyean.com").toString();
             RestAssured.basePath = envInfo.getOrDefault("basePath", "/cashier").toString();
         }
