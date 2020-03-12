@@ -3,7 +3,6 @@ package com.kaimai.cashier.common;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.kaimai.util.ReadYaml;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 

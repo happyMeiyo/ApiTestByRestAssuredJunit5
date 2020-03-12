@@ -12,6 +12,7 @@ import java.util.Map;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@DisplayName("测试权限相关业务")
 public class TestPermission extends TestUser{
 
     @Test
@@ -24,7 +25,7 @@ public class TestPermission extends TestUser{
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(permission);
 
-        assertThat("类目返回数据格式正确", json, matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/permissionSchema.json"));
+        assertThat("权限数据格式正确", json, matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/permissionSchema.json"));
 
     }
 }

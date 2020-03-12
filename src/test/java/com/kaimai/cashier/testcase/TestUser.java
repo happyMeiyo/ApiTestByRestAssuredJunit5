@@ -12,7 +12,7 @@ import org.junit.jupiter.api.BeforeAll;
 import static org.hamcrest.Matchers.equalTo;
 
 public class TestUser {
-    static UserLogin ul = new UserLogin();
+    static UserLogin ul = UserLogin.getInstance();
 
     @BeforeAll
     static void userLogin() {
@@ -23,6 +23,8 @@ public class TestUser {
             if (success) {
                 String token = userLoginRsp.then().
                         extract().path("data.accessToken");
+                Integer userId = userLoginRsp.then().
+                        extract().path("data.userId");
                 //使用Filter方法，在请求中添加cookie
 //                RestAssured.filters((req, res, ctx) -> {
 //                    //请求头中添加Cookie
@@ -35,6 +37,9 @@ public class TestUser {
                 RequestSpecBuilder reqBuilder = new RequestSpecBuilder();
                 reqBuilder.addHeader("Cookie", String.format("hsAccessToken=%s", token));
                 RestAssured.requestSpecification = reqBuilder.build();
+
+                ul.setToken(token);
+                ul.setUserId(userId);
             }
             //响应消息的基础判断
             ResponseSpecBuilder respBuilder = new ResponseSpecBuilder();

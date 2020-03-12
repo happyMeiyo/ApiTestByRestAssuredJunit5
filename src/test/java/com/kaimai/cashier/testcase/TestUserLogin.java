@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.hamcrest.Matchers.equalTo;
 
+@DisplayName("测试用户登录相关业务")
 public class TestUserLogin {
 
     @Test

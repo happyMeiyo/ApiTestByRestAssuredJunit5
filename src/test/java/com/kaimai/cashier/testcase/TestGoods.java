@@ -12,6 +12,7 @@ import java.util.Map;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@DisplayName("测试商品相关业务")
 public class TestGoods extends TestUser{
     @Test
     @DisplayName("获取商品分类")
