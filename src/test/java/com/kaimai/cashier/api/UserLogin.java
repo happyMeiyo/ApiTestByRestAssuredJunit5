@@ -38,28 +38,34 @@ public class UserLogin extends CashierConfig{
     @Step("用户登录 merchantCode {0}, username {1} and password {2}")
     public Response userLogin(String merchantCode, String username, String password){
         return given().
-                formParam("merchantCode", merchantCode).
-                formParam("username", username).
-                formParam("password", password).
-               when().
-                post("/v1/passport/login").
-               then().extract().response();
+                    formParam("merchantCode", merchantCode).
+                    formParam("username", username).
+                    formParam("password", password).
+                when().
+                    post("/v1/passport/login").
+                then().
+                    extract().response();
     }
 
 
+    @Step("用户登录成功")
     public Response userLoginSuccess(){
         User userInfo = User.getInstance();
         return userLogin(userInfo.getMerchantCode(), userInfo.getUserCode(), userInfo.getPassword());
     }
 
+    @Step("用户登陆失败")
     public Response userLoginFailure(String merchantCode, String username, String password) {
         return userLogin(merchantCode,username,password);
     }
 
     @Step("用户退出登录")
     public Response userLogout(){
-        return given().when().post("/v1/passport/logout").
-               then().extract().response();
+        return given().
+                when().
+                    post("/v1/passport/logout").
+                then().
+                    extract().response();
     }
 
 

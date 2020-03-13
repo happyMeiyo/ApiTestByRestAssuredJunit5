@@ -10,8 +10,9 @@ public class Permission extends CashierConfig {
     @Step("获取权限列表")
     public Response getPermission(){
         return given().
-                post("/v1/permission/permissions").
-               then().
-                extract().response();
+                when().
+                    post("/v1/permission/permissions").
+                then().
+                    extract().response();
     }
 }

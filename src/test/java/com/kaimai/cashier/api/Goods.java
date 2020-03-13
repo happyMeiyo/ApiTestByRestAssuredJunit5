@@ -10,9 +10,10 @@ public class Goods extends CashierConfig {
     @Step("获取商品分类")
     public Response getCategorys(){
         return given().
-                post("/v1/product/shop/category/query").
+                when().
+                    post("/v1/product/shop/category/query").
                 then().
-                extract().response();
+                    extract().response();
     }
 
 }
