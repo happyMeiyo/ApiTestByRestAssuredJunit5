@@ -1,17 +1,26 @@
 package com.kaimai.cashier.api;
 
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.kaimai.cashier.testcase.TestVipApp;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
 import org.hamcrest.Condition;
 
+import java.io.InputStream;
+import java.util.HashMap;
+
 import static io.restassured.RestAssured.given;
 
 public class VipApplication {
-    String vipPhone;
-    String vipCardNo;
-    String vipName;
+    private String vipPhone;
+    private String vipCardNo;
+    private String vipName;
+
+    private static VipApplication vip;
 
     public void setVipPhone(String vipPhone) {
         this.vipPhone = vipPhone;
@@ -35,6 +44,32 @@ public class VipApplication {
 
     public void setVipName(String vipName) {
         this.vipName = vipName;
+    }
+
+    public VipApplication() {
+
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+
+        TypeReference<HashMap<String, Object>> typeRef =
+                new TypeReference<HashMap<String, Object>>() {
+                };
+        InputStream src = TestVipApp.class.getResourceAsStream("vip.yml");
+
+        try {
+            HashMap<String, Object> VipInfo = mapper.readValue(src, typeRef);
+            setVipPhone(VipInfo.get("vipPhone").toString());
+            setVipCardNo(VipInfo.get("vipCardNo").toString());
+            setVipName(VipInfo.get("vipName").toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static VipApplication getInstance() {
+        if (vip == null) {
+            vip = new VipApplication();
+        }
+        return vip;
     }
 
     @Step("获取会员列表")
@@ -114,16 +149,4 @@ public class VipApplication {
                     extract().response();
     }
 
-    @Step("会员充值")
-    public Response chargeForVip(String vipCardNo, String channel, Integer amount) {
-        return given().
-                    formParam("vipCardNo", vipCardNo).
-                    formParam("payAmount", amount).
-                    formParam("paymentChannel", channel).
-                    formParam("totalAmount", amount).
-                when().
-                    post("/v1/order/charge").
-                then().
-                    extract().response();
-    }
 }

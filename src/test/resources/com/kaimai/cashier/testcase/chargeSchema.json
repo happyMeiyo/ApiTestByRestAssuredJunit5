@@ -1,0 +1,629 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1584084069.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "data",
+    "result"
+  ],
+  "properties": {
+    "data": {
+      "$id": "#root/data",
+      "title": "Data",
+      "type": "object",
+      "required": [
+        "activityDiscountAmount",
+        "bonusPointAmount",
+        "buyerPayAmount",
+        "canReturnGoods",
+        "channelAssistDiscount",
+        "couponDiscountAmount",
+        "eliminateAmount",
+        "goodsCount",
+        "merchantCode",
+        "merchantDiscountTotalAmount",
+        "merchantName",
+        "needPayAmount",
+        "operationCode",
+        "operationId",
+        "operationName",
+        "orderNo",
+        "orderStatus",
+        "orderTime",
+        "payList",
+        "paymentChannels",
+        "productDiscountAmount",
+        "receiveAmount",
+        "refundAmount",
+        "storeCode",
+        "storeName",
+        "subject",
+        "tempDiscountAmount",
+        "totalAmount",
+        "tradeType",
+        "unDiscountableAmount",
+        "vip",
+        "vipCardNo",
+        "vipDiscountAmount",
+        "waitPayAmount"
+      ],
+      "properties": {
+        "activityDiscountAmount": {
+          "$id": "#root/data/activityDiscountAmount",
+          "title": "Activitydiscountamount",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "bonusPointAmount": {
+          "$id": "#root/data/bonusPointAmount",
+          "title": "Bonuspointamount",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "buyerPayAmount": {
+          "$id": "#root/data/buyerPayAmount",
+          "title": "Buyerpayamount",
+          "type": "integer",
+          "examples": [
+            400
+          ],
+          "default": 0
+        },
+        "canReturnGoods": {
+          "$id": "#root/data/canReturnGoods",
+          "title": "Canreturngoods",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        },
+        "channelAssistDiscount": {
+          "$id": "#root/data/channelAssistDiscount",
+          "title": "Channelassistdiscount",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "couponDiscountAmount": {
+          "$id": "#root/data/couponDiscountAmount",
+          "title": "Coupondiscountamount",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "eliminateAmount": {
+          "$id": "#root/data/eliminateAmount",
+          "title": "Eliminateamount",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "goodsCount": {
+          "$id": "#root/data/goodsCount",
+          "title": "Goodscount",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "merchantCode": {
+          "$id": "#root/data/merchantCode",
+          "title": "Merchantcode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "100457"
+          ],
+          "pattern": "^.*$"
+        },
+        "merchantDiscountTotalAmount": {
+          "$id": "#root/data/merchantDiscountTotalAmount",
+          "title": "Merchantdiscounttotalamount",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "merchantName": {
+          "$id": "#root/data/merchantName",
+          "title": "Merchantname",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "杭州修养坊健康科技连锁有限公司"
+          ],
+          "pattern": "^.*$"
+        },
+        "needPayAmount": {
+          "$id": "#root/data/needPayAmount",
+          "title": "Needpayamount",
+          "type": "integer",
+          "examples": [
+            400
+          ],
+          "default": 0
+        },
+        "operationCode": {
+          "$id": "#root/data/operationCode",
+          "title": "Operationcode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "qing"
+          ],
+          "pattern": "^.*$"
+        },
+        "operationId": {
+          "$id": "#root/data/operationId",
+          "title": "Operationid",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "1020"
+          ],
+          "pattern": "^.*$"
+        },
+        "operationName": {
+          "$id": "#root/data/operationName",
+          "title": "Operationname",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "qing"
+          ],
+          "pattern": "^.*$"
+        },
+        "orderNo": {
+          "$id": "#root/data/orderNo",
+          "title": "Orderno",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "2640112983483"
+          ],
+          "pattern": "^.*$"
+        },
+        "orderStatus": {
+          "$id": "#root/data/orderStatus",
+          "title": "Orderstatus",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "PAY_SUC"
+          ],
+          "pattern": "^.*$"
+        },
+        "orderTime": {
+          "$id": "#root/data/orderTime",
+          "title": "Ordertime",
+          "type": "integer",
+          "examples": [
+            1584067794088
+          ],
+          "default": 0
+        },
+        "payList": {
+          "$id": "#root/data/payList",
+          "title": "Paylist",
+          "type": "array",
+          "default": [],
+          "items":{
+            "$id": "#root/data/payList/items",
+            "title": "Items",
+            "type": "object",
+            "required": [
+              "appOrderNo",
+              "cashBackAmount",
+              "chargeGiftAmount",
+              "clientOrderNo",
+              "gmtCreate",
+              "id",
+              "orderNo",
+              "orderStatus",
+              "paymentChannel",
+              "receiveAmount",
+              "refPayOrderNo",
+              "refundAmount",
+              "totalAmount",
+              "tradeType",
+              "version"
+            ],
+            "properties": {
+              "appOrderNo": {
+                "$id": "#root/data/payList/items/appOrderNo",
+                "title": "Apporderno",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "2640112983483-2020031310495417530"
+                ],
+                "pattern": "^.*$"
+              },
+              "cashBackAmount": {
+                "$id": "#root/data/payList/items/cashBackAmount",
+                "title": "Cashbackamount",
+                "type": "integer",
+                "examples": [
+                  0
+                ],
+                "default": 0
+              },
+              "chargeGiftAmount": {
+                "$id": "#root/data/payList/items/chargeGiftAmount",
+                "title": "Chargegiftamount",
+                "type": "integer",
+                "examples": [
+                  100
+                ],
+                "default": 0
+              },
+              "clientOrderNo": {
+                "$id": "#root/data/payList/items/clientOrderNo",
+                "title": "Clientorderno",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "ZX1G42CPJD-20200313105002-1913756"
+                ],
+                "pattern": "^.*$"
+              },
+              "gmtCreate": {
+                "$id": "#root/data/payList/items/gmtCreate",
+                "title": "Gmtcreate",
+                "type": "integer",
+                "examples": [
+                  1584067794000
+                ],
+                "default": 0
+              },
+              "id": {
+                "$id": "#root/data/payList/items/id",
+                "title": "Id",
+                "type": "integer",
+                "examples": [
+                  514
+                ],
+                "default": 0
+              },
+              "orderNo": {
+                "$id": "#root/data/payList/items/orderNo",
+                "title": "Orderno",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "2640112983483"
+                ],
+                "pattern": "^.*$"
+              },
+              "orderStatus": {
+                "$id": "#root/data/payList/items/orderStatus",
+                "title": "Orderstatus",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "PAY_SUC"
+                ],
+                "pattern": "^.*$"
+              },
+              "paymentChannel": {
+                "$id": "#root/data/payList/items/paymentChannel",
+                "title": "Paymentchannel",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "CASH"
+                ],
+                "pattern": "^.*$"
+              },
+              "receiveAmount": {
+                "$id": "#root/data/payList/items/receiveAmount",
+                "title": "Receiveamount",
+                "type": "integer",
+                "examples": [
+                  400
+                ],
+                "default": 0
+              },
+              "refPayOrderNo": {
+                "$id": "#root/data/payList/items/refPayOrderNo",
+                "title": "Refpayorderno",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "TCCASH2003131049543046850720"
+                ],
+                "pattern": "^.*$"
+              },
+              "refundAmount": {
+                "$id": "#root/data/payList/items/refundAmount",
+                "title": "Refundamount",
+                "type": "integer",
+                "examples": [
+                  0
+                ],
+                "default": 0
+              },
+              "totalAmount": {
+                "$id": "#root/data/payList/items/totalAmount",
+                "title": "Totalamount",
+                "type": "integer",
+                "examples": [
+                  400
+                ],
+                "default": 0
+              },
+              "tradeType": {
+                "$id": "#root/data/payList/items/tradeType",
+                "title": "Tradetype",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "PAYMENT"
+                ],
+                "pattern": "^.*$"
+              },
+              "version": {
+                "$id": "#root/data/payList/items/version",
+                "title": "Version",
+                "type": "integer",
+                "examples": [
+                  1
+                ],
+                "default": 0
+              }
+            }
+          }
+
+        },
+        "paymentChannels": {
+          "$id": "#root/data/paymentChannels",
+          "title": "Paymentchannels",
+          "type": "array",
+          "default": [],
+          "items":{
+            "$id": "#root/data/paymentChannels/items",
+            "title": "Items",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "CASH"
+            ],
+            "pattern": "^.*$"
+          }
+        },
+        "productDiscountAmount": {
+          "$id": "#root/data/productDiscountAmount",
+          "title": "Productdiscountamount",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "receiveAmount": {
+          "$id": "#root/data/receiveAmount",
+          "title": "Receiveamount",
+          "type": "integer",
+          "examples": [
+            400
+          ],
+          "default": 0
+        },
+        "refundAmount": {
+          "$id": "#root/data/refundAmount",
+          "title": "Refundamount",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "storeCode": {
+          "$id": "#root/data/storeCode",
+          "title": "Storecode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "000605"
+          ],
+          "pattern": "^.*$"
+        },
+        "storeName": {
+          "$id": "#root/data/storeName",
+          "title": "Storename",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "清雨的门店"
+          ],
+          "pattern": "^.*$"
+        },
+        "subject": {
+          "$id": "#root/data/subject",
+          "title": "Subject",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "清雨的门店 充值"
+          ],
+          "pattern": "^.*$"
+        },
+        "tempDiscountAmount": {
+          "$id": "#root/data/tempDiscountAmount",
+          "title": "Tempdiscountamount",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "totalAmount": {
+          "$id": "#root/data/totalAmount",
+          "title": "Totalamount",
+          "type": "integer",
+          "examples": [
+            400
+          ],
+          "default": 0
+        },
+        "tradeType": {
+          "$id": "#root/data/tradeType",
+          "title": "Tradetype",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "CHARGE"
+          ],
+          "pattern": "^.*$"
+        },
+        "unDiscountableAmount": {
+          "$id": "#root/data/unDiscountableAmount",
+          "title": "Undiscountableamount",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "vip": {
+          "$id": "#root/data/vip",
+          "title": "Vip",
+          "type": "object",
+          "required": [
+            "balanceAmount",
+            "balancePoint",
+            "cardNo",
+            "chargeAmount",
+            "giftAmount",
+            "vipPhone"
+          ],
+          "properties": {
+            "balanceAmount": {
+              "$id": "#root/data/vip/balanceAmount",
+              "title": "Balanceamount",
+              "type": "integer",
+              "examples": [
+                446300
+              ],
+              "default": 0
+            },
+            "balancePoint": {
+              "$id": "#root/data/vip/balancePoint",
+              "title": "Balancepoint",
+              "type": "integer",
+              "examples": [
+                535326
+              ],
+              "default": 0
+            },
+            "cardNo": {
+              "$id": "#root/data/vip/cardNo",
+              "title": "Cardno",
+              "type": "string",
+              "default": "",
+              "examples": [
+                "201910315792154"
+              ],
+              "pattern": "^.*$"
+            },
+            "chargeAmount": {
+              "$id": "#root/data/vip/chargeAmount",
+              "title": "Chargeamount",
+              "type": "integer",
+              "examples": [
+                400
+              ],
+              "default": 0
+            },
+            "giftAmount": {
+              "$id": "#root/data/vip/giftAmount",
+              "title": "Giftamount",
+              "type": "integer",
+              "examples": [
+                100
+              ],
+              "default": 0
+            },
+            "vipPhone": {
+              "$id": "#root/data/vip/vipPhone",
+              "title": "Vipphone",
+              "type": "string",
+              "default": "",
+              "examples": [
+                "18621902561"
+              ],
+              "pattern": "^.*$"
+            }
+          }
+        }
+      ,
+        "vipCardNo": {
+          "$id": "#root/data/vipCardNo",
+          "title": "Vipcardno",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "201910315792154"
+          ],
+          "pattern": "^.*$"
+        },
+        "vipDiscountAmount": {
+          "$id": "#root/data/vipDiscountAmount",
+          "title": "Vipdiscountamount",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        },
+        "waitPayAmount": {
+          "$id": "#root/data/waitPayAmount",
+          "title": "Waitpayamount",
+          "type": "integer",
+          "examples": [
+            0
+          ],
+          "default": 0
+        }
+      }
+    }
+  ,
+    "result": {
+      "$id": "#root/result",
+      "title": "Result",
+      "type": "object",
+      "required": [
+        "success"
+      ],
+      "properties": {
+        "success": {
+          "$id": "#root/result/success",
+          "title": "Success",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        }
+      }
+    }
+
+  }
+}

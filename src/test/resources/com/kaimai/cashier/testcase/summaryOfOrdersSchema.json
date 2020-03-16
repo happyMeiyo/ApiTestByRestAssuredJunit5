@@ -1,0 +1,165 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1584342136.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "result",
+    "data"
+  ],
+  "properties": {
+    "result": {
+      "$id": "#root/result",
+      "title": "Result",
+      "type": "object",
+      "required": [
+        "success"
+      ],
+      "properties": {
+        "success": {
+          "$id": "#root/result/success",
+          "title": "Success",
+          "type": "boolean",
+          "examples": [
+            true
+          ],
+          "default": true
+        }
+      }
+    }
+  ,
+    "data": {
+      "$id": "#root/data",
+      "title": "Data",
+      "type": "object",
+      "required": [
+        "orderStartTime",
+        "orderEndTime",
+        "printTime",
+        "summaryOrderAmountList",
+        "merchantName",
+        "storeName",
+        "operationName",
+        "operationCode"
+      ],
+      "properties": {
+        "orderStartTime": {
+          "$id": "#root/data/orderStartTime",
+          "title": "Orderstarttime",
+          "type": "integer",
+          "examples": [
+            1584288000000
+          ],
+          "default": 0
+        },
+        "orderEndTime": {
+          "$id": "#root/data/orderEndTime",
+          "title": "Orderendtime",
+          "type": "integer",
+          "examples": [
+            1584374399000
+          ],
+          "default": 0
+        },
+        "printTime": {
+          "$id": "#root/data/printTime",
+          "title": "Printtime",
+          "type": "integer",
+          "examples": [
+            1584338356447
+          ],
+          "default": 0
+        },
+        "summaryOrderAmountList": {
+          "$id": "#root/data/summaryOrderAmountList",
+          "title": "Summaryorderamountlist",
+          "type": "array",
+          "default": [],
+          "items":{
+            "$id": "#root/data/summaryOrderAmountList/items",
+            "title": "Items",
+            "type": "object",
+            "required": [
+              "summaryAmountType",
+              "totalAmount",
+              "orderTotalCount"
+            ],
+            "properties": {
+              "summaryAmountType": {
+                "$id": "#root/data/summaryOrderAmountList/items/summaryAmountType",
+                "title": "Summaryamounttype",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "INCOME"
+                ],
+                "pattern": "^.*$"
+              },
+              "totalAmount": {
+                "$id": "#root/data/summaryOrderAmountList/items/totalAmount",
+                "title": "Totalamount",
+                "type": "integer",
+                "examples": [
+                  100
+                ],
+                "default": 0
+              },
+              "orderTotalCount": {
+                "$id": "#root/data/summaryOrderAmountList/items/orderTotalCount",
+                "title": "Ordertotalcount",
+                "type": "integer",
+                "examples": [
+                  0
+                ],
+                "default": 0
+              }
+            }
+          }
+
+        },
+        "merchantName": {
+          "$id": "#root/data/merchantName",
+          "title": "Merchantname",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "杭州修养坊健康科技连锁有限公司"
+          ],
+          "pattern": "^.*$"
+        },
+        "storeName": {
+          "$id": "#root/data/storeName",
+          "title": "Storename",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "清雨的门店"
+          ],
+          "pattern": "^.*$"
+        },
+        "operationName": {
+          "$id": "#root/data/operationName",
+          "title": "Operationname",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "dianzhang"
+          ],
+          "pattern": "^.*$"
+        },
+        "operationCode": {
+          "$id": "#root/data/operationCode",
+          "title": "Operationcode",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "qing"
+          ],
+          "pattern": "^.*$"
+        }
+      }
+    }
+
+  }
+}
