@@ -1,26 +1,19 @@
 package com.kaimai.cashier.testcase;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.kaimai.cashier.api.OrderApplication;
 import com.kaimai.cashier.api.PayApplication;
 import com.kaimai.cashier.api.VipApplication;
 import io.qameta.allure.Description;
-import io.qameta.allure.Step;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
@@ -41,7 +34,7 @@ public class TestPay extends TestUser{
     @ParameterizedTest(name="会员{0}充值：{1}")
     @Description("会员现金充值成功")
     @CsvSource({"CASH,100"})
-    void testChargeByCashForVip(String channel, Integer amount) throws IOException {
+    void testChargeByCashForVip(String channel, Integer amount){
         Map<String, Object> chargeInfo = pay.chargeForVip(vip.getVipCardNo(), channel, amount).
                 then().body("result.success", equalTo(true)).
                 extract().jsonPath().getMap("data");
@@ -80,7 +73,6 @@ public class TestPay extends TestUser{
     @DisplayName("获取充值订单的详情")
     @Description("获取充值订单的详情成功")
     void testDetailOfOrder() throws JsonProcessingException {
-        String orderNO = order.getOrderNo();
         Map<String, Object> orderInfo = order.getDetailOfOrder(order.getOrderNo()).
                 then().body("result.success", equalTo(true)).
                 body("data.orderInfo.orderNo", equalTo(order.getOrderNo())).
