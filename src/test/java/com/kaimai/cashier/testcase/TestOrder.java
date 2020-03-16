@@ -7,10 +7,12 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.kaimai.cashier.api.OrderApplication;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -41,6 +43,15 @@ public class TestOrder extends TestUser{
         order.getDetailOfSummaryForOrders(startTime, endTime).
                 then().body("result.success", equalTo(true)).
                        body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/summaryOfOrdersSchema.json"));
+    }
+
+    @ParameterizedTest(name="查询订单详情异常，订单号为空")
+    @DisplayName("获取订单详情异常")
+    @Description("测试获取订单详情异常情况")
+    @NullAndEmptySource
+    void testDetailOfOrder(String ordrNO) {
+       order.getDetailOfOrder(ordrNO).
+                then().body("result.success", equalTo(false));
     }
 
 
