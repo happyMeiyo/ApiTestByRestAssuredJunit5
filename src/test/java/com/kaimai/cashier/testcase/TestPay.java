@@ -10,17 +10,21 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @DisplayName("支付相关业务测试")
 public class TestPay extends TestUser{
@@ -29,13 +33,40 @@ public class TestPay extends TestUser{
     OrderApplication order = OrderApplication.getInstance();
     PayApplication pay = new PayApplication();
 
+
+    static Stream<Arguments> chargeForVipExp() {
+        String vipCardNo = vip.getVipCardNo();
+        return Stream.of(
+                arguments("VIPCARD", vipCardNo, 100, 100, "不支持的交易渠道"),
+                arguments("ALIPAY", null,100, 100, "请选择要充值的会员！"),
+                arguments(null, vipCardNo,100, 100, "支付条码或支付渠道必选！"),
+                arguments("WECHAT", vipCardNo,99, 100, "充值不支持部分付款"),
+                arguments("CASH", vipCardNo,100, 99, "实际支付金额大于订单总金额，请查证后再试！"),
+                arguments("CASH", vipCardNo,0, 0, "订单金额应该大于0")
+        );
+    }
+
+
     @Order(1)
+    @DisplayName("会员充值异常测试")
+    @ParameterizedTest(name="会员充值：渠道{0}，会员卡{1},支付金额{2}，充值金额{3}")
+    @Description("会员充值异常场景测试")
+    @MethodSource("chargeForVipExp")
+    void testChargeByCashForVipExp(String channel, String vipCardNo, Integer payAmount, Integer totalAmount, String errMsg){
+        pay.chargeForVip(vipCardNo, channel, payAmount, totalAmount).
+                then().
+                    body("result.success", equalTo(false)).
+                    body("result.errorMsg", equalTo(errMsg));
+
+    }
+
+    @Order(50)
     @DisplayName("会员现金充值成功")
     @ParameterizedTest(name="会员{0}充值：{1}")
     @Description("会员现金充值成功")
     @CsvSource({"CASH,100"})
     void testChargeByCashForVip(String channel, Integer amount){
-        Map<String, Object> chargeInfo = pay.chargeForVip(vip.getVipCardNo(), channel, amount).
+        Map<String, Object> chargeInfo = pay.chargeForVip(vip.getVipCardNo(), channel, amount, amount).
                 then().body("result.success", equalTo(true)).
                 extract().jsonPath().getMap("data");
 
@@ -84,5 +115,29 @@ public class TestPay extends TestUser{
         assertThat("数据格式正确", json, matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/orderSchema.json"));
     }
 
-
+//    static Stream<Arguments> payExp() {
+//        String vipCardNo = vip.getVipCardNo();
+//        return Stream.of(
+//                arguments("VIPCARD", vipCardNo, 100, 100, "不支持的交易渠道"),
+//                arguments("ALIPAY", null,100, 100, "请选择要充值的会员！"),
+//                arguments(null, vipCardNo,100, 100, "支付条码或支付渠道必选！"),
+//                arguments("WECHAT", vipCardNo,99, 100, "充值不支持部分付款"),
+//                arguments("CASH", vipCardNo,100, 99, "实际支付金额大于订单总金额，请查证后再试！"),
+//                arguments("CASH", vipCardNo,0, 0, "订单金额应该大于0")
+//        );
+//    }
+//
+//
+//    @Order(1)
+//    @DisplayName("支付异常测试")
+//    @ParameterizedTest(name="会员充值：渠道{0}，会员卡{1},支付金额{2}，充值金额{3}")
+//    @Description("会员充值异常场景测试")
+//    @MethodSource("payExp")
+//    void testPayExp(String channel, String vipCardNo, Integer payAmount, Integer totalAmount, String errMsg){
+//        pay.chargeForVip(vipCardNo, channel, payAmount, totalAmount).
+//                then().
+//                body("result.success", equalTo(false)).
+//                body("result.errorMsg", equalTo(errMsg));
+//
+//    }
 }
