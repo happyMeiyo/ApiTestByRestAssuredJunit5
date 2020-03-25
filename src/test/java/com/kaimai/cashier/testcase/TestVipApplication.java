@@ -17,7 +17,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static org.hamcrest.Matchers.*;
 
 @DisplayName("测试会员相关业务")
-public class TestVipApp extends TestUser {
+public class TestVipApplication extends TestUser {
     static VipApplication vip = VipApplication.getInstance();
 
     @ParameterizedTest(name="查询会员异常，会员码为空")

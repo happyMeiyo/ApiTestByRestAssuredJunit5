@@ -4,11 +4,9 @@ package com.kaimai.cashier.api;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.kaimai.cashier.testcase.TestVipApp;
+import com.kaimai.cashier.testcase.TestVipApplication;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import io.restassured.specification.ResponseSpecification;
-import org.hamcrest.Condition;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -53,7 +51,7 @@ public class VipApplication {
         TypeReference<HashMap<String, Object>> typeRef =
                 new TypeReference<HashMap<String, Object>>() {
                 };
-        InputStream src = TestVipApp.class.getResourceAsStream("vip.yml");
+        InputStream src = TestVipApplication.class.getResourceAsStream("vip.yml");
 
         try {
             HashMap<String, Object> VipInfo = mapper.readValue(src, typeRef);

@@ -2,6 +2,9 @@ package com.kaimai.cashier.testcase;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.mustachejava.DefaultMustacheFactory;
+import com.github.mustachejava.Mustache;
+import com.github.mustachejava.MustacheFactory;
 import com.kaimai.cashier.api.OrderApplication;
 import com.kaimai.cashier.api.PayApplication;
 import com.kaimai.cashier.api.VipApplication;
@@ -14,8 +17,12 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -106,7 +113,7 @@ public class TestPay extends TestUser{
     void testDetailOfOrder() throws JsonProcessingException {
         Map<String, Object> orderInfo = order.getDetailOfOrder(order.getOrderNo()).
                 then().body("result.success", equalTo(true)).
-                body("data.orderInfo.orderNo", equalTo(order.getOrderNo())).
+                       body("data.orderInfo.orderNo", equalTo(order.getOrderNo())).
                 extract().jsonPath().getMap("data");
 
         ObjectMapper mapper = new ObjectMapper();
@@ -140,4 +147,28 @@ public class TestPay extends TestUser{
 //                body("result.errorMsg", equalTo(errMsg));
 //
 //    }
+
+    @Test
+    @Description("现金支付")
+    @DisplayName("现金支付")
+    void testPayByCash() {
+        HashMap<String, Object> data = new HashMap<>();
+        String body=template("/com/kaimai/cashier/testcase/payTemplate.json", data);
+
+        pay.pay(body).
+                then().body("result.success", equalTo(true));
+    }
+
+    public String template(String templatePath, HashMap<String, Object> data){
+        Writer writer = new StringWriter();
+        MustacheFactory mf = new DefaultMustacheFactory();
+        Mustache mustache = mf.compile(this.getClass().getResource(templatePath).getPath());
+        mustache.execute(writer, data);
+        try {
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return writer.toString();
+    }
 }
