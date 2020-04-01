@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.kaimaierp.www</groupId>
-    <artifactId>ApiTestOfKaimaiForCashier</artifactId>
+    <artifactId>ApiTestByRestAssuredJunit5</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <rest-assured.version>4.2.0</rest-assured.version>
