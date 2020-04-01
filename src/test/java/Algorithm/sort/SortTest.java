@@ -24,7 +24,8 @@ class SortTest {
                 arguments(Collections.singletonList(1), Collections.singletonList(1), 1),
                 arguments(Arrays.asList(4,2), Arrays.asList(2,4), 2),
                 arguments(Arrays.asList(1,2,3), Arrays.asList(1,2,3), 3),
-                arguments(Arrays.asList(6,5,4,3,2,1), Arrays.asList(1,2,3,4,5,6), 6)
+                arguments(Arrays.asList(6,5,4,3,2,1), Arrays.asList(1,2,3,4,5,6), 6),
+                arguments(Arrays.asList(2,5,3,0,2,3,0,3),Arrays.asList(0,0,2,2,3,3,3,5),8)
         );
     }
 
@@ -85,6 +86,16 @@ class SortTest {
     @MethodSource("intListProvider")
     void quickSortList(List<Integer> a, List<Integer> b, int len) {
         QuickSort.quickSort(a, len);
+        assertIterableEquals(b,a,"排序成功");
+
+    }
+
+    @DisplayName("测试计数排序")
+    @Description("测试计数排序")
+    @ParameterizedTest(name = "测试计数排序, a={0}, len={1}")
+    @MethodSource("intListProvider")
+    void linearSortList(List<Integer> a, List<Integer> b, int len) {
+        LinearSort.countingSort(a, len);
         assertIterableEquals(b,a,"排序成功");
 
     }
