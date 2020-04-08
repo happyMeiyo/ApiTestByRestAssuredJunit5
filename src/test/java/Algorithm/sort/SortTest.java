@@ -31,7 +31,7 @@ class SortTest {
 
     @DisplayName("测试冒泡排序")
     @Description("测试冒泡排序")
-    @ParameterizedTest(name = "冒泡排序测试, a={0}, len={1}")
+    @ParameterizedTest(name = "冒泡排序测试, a={0}, len={2}")
     @MethodSource("intListProvider")
     void bubbleSortList(List<Integer> a, List<Integer> b, int len) {
         BubbleSort.bubbleSortList(a, len);
@@ -41,7 +41,7 @@ class SortTest {
 
     @DisplayName("测试冒泡排序")
     @Description("测试冒泡排序")
-    @ParameterizedTest(name = "冒泡排序测试, a={0}, len={1}")
+    @ParameterizedTest(name = "冒泡排序测试, a={0}, len={2}")
     @MethodSource("intListProvider")
     void bubbleSortArray(List<Integer> aList, List<Integer> bList, int len) {
 
@@ -57,7 +57,7 @@ class SortTest {
 
     @DisplayName("测试插入排序")
     @Description("测试插入排序")
-    @ParameterizedTest(name = "插入排序测试, a={0}, len={1}")
+    @ParameterizedTest(name = "插入排序测试, a={0}, len={2}")
     @MethodSource("intListProvider")
     void insertionSort(List<Integer> aList, List<Integer> bList, int len) {
         Integer[] a = new Integer[len];
@@ -71,7 +71,7 @@ class SortTest {
 
     @DisplayName("测试插入排序")
     @Description("测试插入排序")
-    @ParameterizedTest(name = "插入排序测试, a={0}, len={1}")
+    @ParameterizedTest(name = "插入排序测试, a={0}, len={2}")
     @MethodSource("intListProvider")
     void insertionSortList(List<Integer> a, List<Integer> b, int len) {
         InsertSort.insertionSortList(a, len);
@@ -82,7 +82,7 @@ class SortTest {
 
     @DisplayName("测试快速排序")
     @Description("测试快速排序")
-    @ParameterizedTest(name = "测试快速排序, a={0}, len={1}")
+    @ParameterizedTest(name = "测试快速排序, a={0}, len={2}")
     @MethodSource("intListProvider")
     void quickSortList(List<Integer> a, List<Integer> b, int len) {
         QuickSort.quickSort(a, len);
@@ -92,7 +92,7 @@ class SortTest {
 
     @DisplayName("测试计数排序")
     @Description("测试计数排序")
-    @ParameterizedTest(name = "测试计数排序, a={0}, len={1}")
+    @ParameterizedTest(name = "测试计数排序, a={0}, len={2}")
     @MethodSource("intListProvider")
     void linearSortList(List<Integer> a, List<Integer> b, int len) {
         LinearSort.countingSort(a, len);
