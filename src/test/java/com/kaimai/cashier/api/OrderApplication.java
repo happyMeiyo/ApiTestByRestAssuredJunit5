@@ -45,4 +45,15 @@ public class OrderApplication extends CashierConfig {
                 then().
                     extract().response();
     }
+
+    @Step("查询订单列表")
+    public Response getListOfOrders(String startTime, String endTime) {
+        return given().
+                    formParam("startTime", startTime).
+                    formParam("endTime", endTime).
+                when().log().all().
+                    post("/v1/order/manager/list").
+                then().log().all().
+                    extract().response();
+    }
 }
