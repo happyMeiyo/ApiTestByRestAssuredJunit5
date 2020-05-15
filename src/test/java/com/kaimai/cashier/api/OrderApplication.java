@@ -29,9 +29,9 @@ public class OrderApplication extends CashierConfig {
     public Response getDetailOfOrder(String orderNo){
         return given().
                     formParam("orderNo", orderNo).
-               when().log().all().
+               when().
                     post("/v1/order/manager/detail").
-               then().log().all().
+               then().
                     extract().response();
     }
 
@@ -51,9 +51,9 @@ public class OrderApplication extends CashierConfig {
         return given().
                     formParam("startTime", startTime).
                     formParam("endTime", endTime).
-                when().log().all().
+                when().
                     post("/v1/order/manager/list").
-                then().log().all().
+                then().
                     extract().response();
     }
 }

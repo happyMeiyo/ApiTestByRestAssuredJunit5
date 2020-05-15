@@ -18,6 +18,7 @@
         <hamcrest-core.version>2.2</hamcrest-core.version>
         <jackson-dataformat-yaml.version>2.10.1</jackson-dataformat-yaml.version>
         <json-schema-validator.version>4.1.2</json-schema-validator.version>
+        <fastjson.version>1.2.68</fastjson.version>
 
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -81,6 +82,13 @@
             <artifactId>json-schema-validator</artifactId>
             <version>${json-schema-validator.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
         </dependency>
 
     </dependencies>

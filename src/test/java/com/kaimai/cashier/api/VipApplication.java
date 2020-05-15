@@ -4,6 +4,7 @@ package com.kaimai.cashier.api;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.kaimai.cashier.common.CashierConfig;
 import com.kaimai.cashier.testcase.TestVipApplication;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
 
-public class VipApplication {
+public class VipApplication extends CashierConfig {
     private String vipPhone;
     private String vipCardNo;
     private String vipName;

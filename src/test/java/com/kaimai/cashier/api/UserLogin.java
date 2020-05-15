@@ -14,10 +14,6 @@ public class UserLogin extends CashierConfig{
         this.token = token;
     }
 
-    public String getToken() {
-        return token;
-    }
-
     public Integer getUserId() {
         return userId;
     }

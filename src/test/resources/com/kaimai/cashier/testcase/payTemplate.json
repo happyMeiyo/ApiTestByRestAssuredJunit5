@@ -1,33 +1,35 @@
 {
   "goodsDetail": [
     {
-      "discountAmount": 0,
-      "discountPrice": 1100,
-      "isTemporaryGoods": false,
-      "isVipPrice": false,
-      "productCategoryIdList0": 2565,
-      "productCategoryIdList1": 2566,
-      "productId": 84345,
-      "productName": "hua花",
-      "saleCount": "1",
-      "salePrice": 1100,
-      "saleUnit": "捆",
-      "skuId": 443765,
-      "skuTitle": "hua花",
-      "skuVersion": 4
+      "discountAmount":0,
+      "discountPrice":0,
+      "isDiscountPrice":false,
+      "isTemporaryGoods":false,
+      "isVipPrice":false,
+      "productCategoryIdList0":9993623,
+      "productCategoryIdList1":9993624,
+      "productId":999181571,
+      "productName":"果脯",
+      "productSkuId":999181613,
+      "saleCount":"1",
+      "salePrice":1300,
+      "saleUnit":"份",
+      "skuId":999305760,
+      "skuTitle":"果脯",
+      "skuVersion":1
     }
   ],
   "tempDiscountAmount": 0,
   "channelId": 4,
   "point": 0,
-  "payAmount": 1100,
+  "payAmount": 1300,
   "unDiscountAmount": 0,
   "eliminateAmount": 0,
   "deviceNo": "ZX1G42CPJD",
-  "paymentChannel": "CASH",
+  "paymentChannel": "{{paymentChannel}}",
   "cashBackAmount": 0,
   "smilePay": false,
   "totalDiscountAmount": 0,
-  "clientOrderNo": "ZX1G42CPJD-20200319152909-9543713",
-  "totalAmount": 1100
+  "clientOrderNo": "ZX1G42CPJD-20200514115050-9742829",
+  "totalAmount": 1300
 }

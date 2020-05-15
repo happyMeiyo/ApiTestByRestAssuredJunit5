@@ -1,5 +1,6 @@
 package com.kaimai.cashier.testcase;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.mustachejava.DefaultMustacheFactory;
@@ -39,7 +40,6 @@ public class TestPay extends TestUser{
     static VipApplication vip = VipApplication.getInstance();
     OrderApplication order = OrderApplication.getInstance();
     PayApplication pay = new PayApplication();
-
 
     static Stream<Arguments> chargeForVipExp() {
         String vipCardNo = vip.getVipCardNo();
@@ -153,9 +153,11 @@ public class TestPay extends TestUser{
     @DisplayName("现金支付")
     void testPayByCash() {
         HashMap<String, Object> data = new HashMap<>();
+        data.put("paymentChannel", "CASH");
         String body=template("/com/kaimai/cashier/testcase/payTemplate.json", data);
+        JSONObject params = JSONObject.parseObject(body);
 
-        pay.pay(body).
+        pay.pay(params).
                 then().body("result.success", equalTo(true));
     }
 
@@ -169,6 +171,8 @@ public class TestPay extends TestUser{
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+//        return writer;
         return writer.toString();
     }
 }
