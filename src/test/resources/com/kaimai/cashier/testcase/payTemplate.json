@@ -20,7 +20,7 @@
     }
   ],
   "tempDiscountAmount": 0,
-  "channelId": 4,
+  "channelId": "{{channelId}}",
   "point": 0,
   "payAmount": 1300,
   "unDiscountAmount": 0,

@@ -1,0 +1,37 @@
+{
+  "goodsDetail":[
+    {
+      "activityId": 3336,
+      "activityType": "CATEGORY_DISCOUNT",
+      "discountAmount": 270,
+      "discountPrice": 1980,
+      "isDiscountPrice": false,
+      "isTemporaryGoods": false,
+      "isVipPrice": false,
+      "productCategoryIdList0": 9994018,
+      "productCategoryIdList1": 9994019,
+      "productId": 999182426,
+      "productName": "香菇饺",
+      "productSkuId": 999182492,
+      "saleCount": "1",
+      "salePrice": 2250,
+      "saleUnit": "份",
+      "skuId": 999367338,
+      "skuTitle": "香菇饺",
+      "skuVersion": 1
+    }
+  ],
+  "tempDiscountAmount":0,
+  "channelId":"{{channelId}}",
+  "point":0,
+  "payAmount":1900,
+  "unDiscountAmount":0,
+  "eliminateAmount":80,
+  "deviceNo":"ZX1G42CPJD",
+  "paymentChannel":"{{paymentChannel}}",
+  "cashBackAmount":3100,
+  "smilePay":false,
+  "totalDiscountAmount":350,
+  "clientOrderNo":"ZX1G42CPJD-20200515164005-0382236",
+  "totalAmount":2250
+}
