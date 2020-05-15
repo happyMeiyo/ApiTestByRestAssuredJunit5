@@ -60,7 +60,7 @@ public class TestCharge extends TestUser{
     @DisplayName("会员现金充值成功")
     @ParameterizedTest(name="会员{0}充值：{1}")
     @Description("会员现金充值成功")
-    @CsvSource({"CASH,100"})
+    @CsvSource({"CASH,50000"})
     void testChargeByCashForVip(String channel, Integer amount){
         Map<String, Object> chargeInfo = pay.chargeForVip(vip.getVipCardNo(), channel, amount, amount).
                 then().body("result.success", equalTo(true)).
