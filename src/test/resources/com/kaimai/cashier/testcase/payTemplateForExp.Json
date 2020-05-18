@@ -1,0 +1,16 @@
+{
+  "goodsDetail":[{"discountAmount":0,"discountPrice":0,"isDiscountPrice":false,"isTemporaryGoods":false,"isVipPrice":false,"productCategoryIdList0":9993623,"productCategoryIdList1":9993624,"productId":999181571,"productName":"果脯","productSkuId":999181613,"saleCount":"1","salePrice":1300,"saleUnit":"份","skuId":999305760,"skuTitle":"果脯","skuVersion":1}],
+  "tempDiscountAmount":0,
+  "channelId":"{{channelId}}",
+  "point":0,
+  "payAmount":"{{payAmount}}",
+  "unDiscountAmount":0,
+  "eliminateAmount":0,
+  "deviceNo":"ZX1G42CPJD",
+  "paymentChannel":"{{paymentChannel}}",
+  "cashBackAmount":0,
+  "smilePay":false,
+  "totalDiscountAmount":0,
+  "clientOrderNo":"ZX1G42CPJD-20200518143641-5046148",
+  "totalAmount":"{{totalAmount}}"
+}
