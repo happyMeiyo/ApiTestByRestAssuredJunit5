@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
+import java.util.stream.Stream;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
@@ -26,9 +27,7 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 public class TestPay extends TestUser{
 
     static VipApplication vip = VipApplication.getInstance();
-    OrderApplication order = OrderApplication.getInstance();
     PayApplication pay = new PayApplication();
-
 
     static Stream<Arguments> payExp() {
 //        String goodsDetail = "[{\"discountAmount\":0,\"discountPrice\":0,\"isDiscountPrice\":false,\"isTemporaryGoods\":false,\"isVipPrice\":false,\"productCategoryIdList0\":9993623,\"productCategoryIdList1\":9993624,\"productId\":999181571,\"productName\":\"果脯\",\"productSkuId\":999181613,\"saleCount\":\"1\",\"salePrice\":1300,\"saleUnit\":\"份\",\"skuId\":999305760,\"skuTitle\":\"果脯\",\"skuVersion\":1}]";
