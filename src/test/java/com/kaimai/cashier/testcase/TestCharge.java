@@ -26,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
+@DisplayName("测试会员充值相关业务")
 public class TestCharge extends TestUser{
     static VipApplication vip = VipApplication.getInstance();
     OrderApplication order = OrderApplication.getInstance();

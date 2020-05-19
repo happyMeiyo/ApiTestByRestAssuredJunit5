@@ -1,13 +1,17 @@
 package com.kaimai.cashier.testcase;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
-import com.kaimai.cashier.api.OrderApplication;
 import com.kaimai.cashier.api.PayApplication;
 import com.kaimai.cashier.api.VipApplication;
 import io.qameta.allure.Description;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.specification.ResponseSpecification;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,16 +22,30 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Stream;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @DisplayName("支付相关业务测试")
 public class TestPay extends TestUser{
-
+    static ResponseSpecification responseSpec;
     static VipApplication vip = VipApplication.getInstance();
     PayApplication pay = new PayApplication();
+
+
+    @BeforeAll
+    @Description("支付成功测试用例的通用断言")
+    static void beforeTestPay(){
+        ResponseSpecBuilder respBuilder = new ResponseSpecBuilder();
+        respBuilder.expectBody("result.success", equalTo(true));
+        respBuilder.expectBody("data.orderStatus", equalTo("PAY_SUC"));
+        respBuilder.expectBody("data.tradeType", equalTo("PAYMENT"));
+        responseSpec = respBuilder.build();
+    }
 
     static Stream<Arguments> payExp() {
 //        String goodsDetail = "[{\"discountAmount\":0,\"discountPrice\":0,\"isDiscountPrice\":false,\"isTemporaryGoods\":false,\"isVipPrice\":false,\"productCategoryIdList0\":9993623,\"productCategoryIdList1\":9993624,\"productId\":999181571,\"productName\":\"果脯\",\"productSkuId\":999181613,\"saleCount\":\"1\",\"salePrice\":1300,\"saleUnit\":\"份\",\"skuId\":999305760,\"skuTitle\":\"果脯\",\"skuVersion\":1}]";
@@ -41,6 +59,7 @@ public class TestPay extends TestUser{
                 arguments("CASH", 4, 1300, 1401, "订单金额异常,不能完成结算，您可以清除购物车商品后，重新加购，若此问题重复出现，请联系客服小二处理")
         );
     }
+
     @DisplayName("支付异常测试")
     @ParameterizedTest(name="支付参数：渠道{0},渠道id{1}，支付金额{2},订单金额{3}")
     @Description("支付异常场景测试")
@@ -77,9 +96,9 @@ public class TestPay extends TestUser{
         data.put("channelId", "4");
         String body=template("/com/kaimai/cashier/testcase/payTemplate.json", data);
         JSONObject params = JSONObject.parseObject(body);
-
-        pay.pay(params).
-                then().body("result.success", equalTo(true));
+        pay.pay(params).then().
+                spec(responseSpec).
+                body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/paySuccessSchema.json"));
     }
 
     @Test
@@ -92,9 +111,9 @@ public class TestPay extends TestUser{
         data.put("channelId", "4");
         String body=template("/com/kaimai/cashier/testcase/payTemplateWithDiscountForCategory.json", data);
         JSONObject params = JSONObject.parseObject(body);
-
-        pay.pay(params).
-                then().body("result.success", equalTo(true));
+        pay.pay(params).then().
+                spec(responseSpec).
+                body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/paySuccessSchema.json"));
     }
 
     @Test
@@ -108,8 +127,9 @@ public class TestPay extends TestUser{
         String body=template("/com/kaimai/cashier/testcase/payTemplateWithDiscountForCatgyAndOrder.json", data);
         JSONObject params = JSONObject.parseObject(body);
 
-        pay.payWithDiscountForOrder(params).
-                then().body("result.success", equalTo(true));
+        pay.payWithDiscountForOrder(params).then().
+                spec(responseSpec).
+                body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/paySuccessSchema.json"));
     }
 
     @Test
@@ -123,8 +143,7 @@ public class TestPay extends TestUser{
         String body=template("/com/kaimai/cashier/testcase/payTemplateWithDiscountForEvyGoodAndOrder.json", data);
         JSONObject params = JSONObject.parseObject(body);
 
-        pay.payWithDiscountForOrder(params).
-                then().body("result.success", equalTo(true));
+        pay.payWithDiscountForOrder(params).then().spec(responseSpec);
     }
 
     @Test
@@ -138,8 +157,9 @@ public class TestPay extends TestUser{
         String body=template("/com/kaimai/cashier/testcase/payTemplateWithDiscountForEveryGoodAndOrder.json", data);
         JSONObject params = JSONObject.parseObject(body);
 
-        pay.pay(params).
-                then().body("result.success", equalTo(true));
+        pay.pay(params).then().
+                spec(responseSpec).
+                body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/paySuccessSchema.json"));
     }
 
     @Test
@@ -153,8 +173,9 @@ public class TestPay extends TestUser{
         String body=template("/com/kaimai/cashier/testcase/payTemplateWithDiscountForGoodsAndOrder.json", data);
         JSONObject params = JSONObject.parseObject(body);
 
-        pay.payWithDiscountForOrder(params).
-                then().body("result.success", equalTo(true));
+        pay.payWithDiscountForOrder(params).then().
+                spec(responseSpec).
+                body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/paySuccessSchema.json"));
     }
 
 
@@ -180,8 +201,10 @@ public class TestPay extends TestUser{
         String body=template("/com/kaimai/cashier/testcase/payTemplateForVip.json", data);
         JSONObject params = JSONObject.parseObject(body);
 
-        pay.payForVip(params).
-                then().body("result.success", equalTo(true));
+        pay.payForVip(params).then().
+                spec(responseSpec).
+                body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/paySuccessSchemaForVip.json"));
+
     }
 
 
@@ -206,8 +229,9 @@ public class TestPay extends TestUser{
 
         String body=template("/com/kaimai/cashier/testcase/payTemplateWithDistForEvyGoodAndOrderForVip.json", data);
         JSONObject params = JSONObject.parseObject(body);
-        pay.payForVip(params).
-                then().body("result.success", equalTo(true));
+        pay.payForVip(params).then().
+                spec(responseSpec).
+                body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/paySuccessSchemaForVip.json"));
     }
 
     @Test
@@ -231,10 +255,37 @@ public class TestPay extends TestUser{
 
         String body=template("/com/kaimai/cashier/testcase/payTemplateWithDistForEvyGoodAndOrderForVip.json", data);
         JSONObject params = JSONObject.parseObject(body);
-        pay.payForVip(params).
-                then().body("result.success", equalTo(true));
+        pay.payForVip(params).then().
+                spec(responseSpec).
+                body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/paySuccessSchemaForVip.json"));
     }
 
+    @Test
+    @DisplayName("会员现金支付，有商品优惠和会员优惠")
+    @Description("商品享受单品优惠和会员优惠(会员价、会员折和积分)，会员现金支付")
+    void testPayWithDiscountForEveryGoodAndPointForVip() throws JsonProcessingException {
+        HashMap<String, Object> data = new HashMap<>();
+        String vipPayToken = "";
+        String vipCardNo = vip.getVipCardNo();
+        try {
+            vipPayToken = vip.getDetailOfVip(vipCardNo).then().extract().path("data.vipPayToken");
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        //会员现金支付
+        data.put("paymentChannel", "CASH");
+        data.put("channelId", "4");
+        data.put("vipCardNo", vipCardNo);
+        data.put("vipPayToken", vipPayToken);
+
+        String body=template("/com/kaimai/cashier/testcase/payTemplateWithDistForEvyGoodAndPointForVip.json", data);
+        JSONObject params = JSONObject.parseObject(body);
+
+        pay.payForVip(params).then().
+                spec(responseSpec).
+                body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/paySuccessSchemaForVip.json"));
+    }
 
     public String template(String templatePath, HashMap<String, Object> data){
         Writer writer = new StringWriter();
@@ -250,4 +301,6 @@ public class TestPay extends TestUser{
 //        return writer;
         return writer.toString();
     }
+
+    // TODO: 2020/5/19 接口v1/vip/promotion/check/v2 和 /v1/vip/promotion/point进行接口测试
 }

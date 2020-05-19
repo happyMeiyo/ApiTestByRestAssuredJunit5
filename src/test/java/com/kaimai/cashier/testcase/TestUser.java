@@ -9,7 +9,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
 
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.lessThan;
 
 public class TestUser {
     static UserLogin ul = UserLogin.getInstance();
@@ -44,6 +46,8 @@ public class TestUser {
             //响应消息的基础判断
             ResponseSpecBuilder respBuilder = new ResponseSpecBuilder();
             respBuilder.expectStatusCode(200);
+            respBuilder.expectContentType("application/json");
+            respBuilder.expectResponseTime(lessThan(10L), SECONDS);
 //            respBuilder.expectBody("result.success", equalTo(true));
             RestAssured.responseSpecification = respBuilder.build();
         }
