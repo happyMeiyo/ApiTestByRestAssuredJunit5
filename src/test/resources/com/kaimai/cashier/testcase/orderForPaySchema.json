@@ -1,0 +1,652 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1589881080.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "result",
+    "data"
+  ],
+  "properties": {
+    "result": {
+      "$id": "#root/result",
+      "title": "Result",
+      "type": "object",
+      "required": [
+        "success"
+      ],
+      "properties": {
+        "success": {
+          "$id": "#root/result/success",
+          "title": "Success",
+          "type": "boolean",
+          "default": true
+        }
+      }
+    }
+  ,
+    "data": {
+      "$id": "#root/data",
+      "title": "Data",
+      "type": "object",
+      "required": [
+        "orderInfo",
+        "goodsList",
+        "tradeList"
+      ],
+      "properties": {
+        "orderInfo": {
+          "$id": "#root/data/orderInfo",
+          "title": "Orderinfo",
+          "type": "object",
+          "required": [
+            "activityDiscountAmount",
+            "bonusPointAmount",
+            "buyerPayAmount",
+            "canReturnGoods",
+            "channelAssistDiscount",
+            "couponDiscountAmount",
+            "eliminateAmount",
+            "goodsCount",
+            "merchantCode",
+            "merchantDiscountTotalAmount",
+            "merchantName",
+            "needPayAmount",
+            "operationCode",
+            "operationId",
+            "operationName",
+            "orderNo",
+            "orderStatus",
+            "orderTime",
+            "paymentChannels",
+            "productDiscountAmount",
+            "receiveAmount",
+            "refundAmount",
+            "storeCode",
+            "storeName",
+            "subStoreName",
+            "subject",
+            "tempDiscountAmount",
+            "totalAmount",
+            "tradeType",
+            "unDiscountableAmount",
+            "vip",
+            "vipCardNo",
+            "vipDiscountAmount",
+            "waitPayAmount"
+          ],
+          "properties": {
+            "activityDiscountAmount": {
+              "$id": "#root/data/orderInfo/activityDiscountAmount",
+              "title": "Activitydiscountamount",
+              "type": "integer",
+              "default": 0
+            },
+            "bonusPointAmount": {
+              "$id": "#root/data/orderInfo/bonusPointAmount",
+              "title": "Bonuspointamount",
+              "type": "integer",
+              "default": 0
+            },
+            "buyerPayAmount": {
+              "$id": "#root/data/orderInfo/buyerPayAmount",
+              "title": "Buyerpayamount",
+              "type": "integer",
+              "default": 0
+            },
+            "canReturnGoods": {
+              "$id": "#root/data/orderInfo/canReturnGoods",
+              "title": "Canreturngoods",
+              "type": "boolean",
+              "default": true
+            },
+            "channelAssistDiscount": {
+              "$id": "#root/data/orderInfo/channelAssistDiscount",
+              "title": "Channelassistdiscount",
+              "type": "integer",
+              "default": 0
+            },
+            "couponDiscountAmount": {
+              "$id": "#root/data/orderInfo/couponDiscountAmount",
+              "title": "Coupondiscountamount",
+              "type": "integer",
+              "default": 0
+            },
+            "eliminateAmount": {
+              "$id": "#root/data/orderInfo/eliminateAmount",
+              "title": "Eliminateamount",
+              "type": "integer",
+              "default": 0
+            },
+            "goodsCount": {
+              "$id": "#root/data/orderInfo/goodsCount",
+              "title": "Goodscount",
+              "type": "integer",
+              "default": 0
+            },
+            "merchantCode": {
+              "$id": "#root/data/orderInfo/merchantCode",
+              "title": "Merchantcode",
+              "type": "string",
+              "default": "",
+              "pattern": "^.*$"
+            },
+            "merchantDiscountTotalAmount": {
+              "$id": "#root/data/orderInfo/merchantDiscountTotalAmount",
+              "title": "Merchantdiscounttotalamount",
+              "type": "integer",
+              "default": 0
+            },
+            "merchantName": {
+              "$id": "#root/data/orderInfo/merchantName",
+              "title": "Merchantname",
+              "type": "string",
+              "default": "",
+              "pattern": "^.*$"
+            },
+            "needPayAmount": {
+              "$id": "#root/data/orderInfo/needPayAmount",
+              "title": "Needpayamount",
+              "type": "integer",
+              "default": 0
+            },
+            "operationCode": {
+              "$id": "#root/data/orderInfo/operationCode",
+              "title": "Operationcode",
+              "type": "string",
+              "default": "",
+              "pattern": "^.*$"
+            },
+            "operationId": {
+              "$id": "#root/data/orderInfo/operationId",
+              "title": "Operationid",
+              "type": "string",
+              "default": "",
+              "pattern": "^.*$"
+            },
+            "operationName": {
+              "$id": "#root/data/orderInfo/operationName",
+              "title": "Operationname",
+              "type": "string",
+              "default": "",
+              "pattern": "^.*$"
+            },
+            "orderNo": {
+              "$id": "#root/data/orderInfo/orderNo",
+              "title": "Orderno",
+              "type": "string",
+              "default": "",
+              "pattern": "^.*$"
+            },
+            "orderStatus": {
+              "$id": "#root/data/orderInfo/orderStatus",
+              "title": "Orderstatus",
+              "type": "string",
+              "default": "",
+              "pattern": "^.*$"
+            },
+            "orderTime": {
+              "$id": "#root/data/orderInfo/orderTime",
+              "title": "Ordertime",
+              "type": "integer",
+              "default": 0
+            },
+            "paymentChannels": {
+              "$id": "#root/data/orderInfo/paymentChannels",
+              "title": "Paymentchannels",
+              "type": "array",
+              "default": [],
+              "items":{
+                "$id": "#root/data/orderInfo/paymentChannels/items",
+                "title": "Items",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              }
+            },
+            "productDiscountAmount": {
+              "$id": "#root/data/orderInfo/productDiscountAmount",
+              "title": "Productdiscountamount",
+              "type": "integer",
+              "default": 0
+            },
+            "receiveAmount": {
+              "$id": "#root/data/orderInfo/receiveAmount",
+              "title": "Receiveamount",
+              "type": "integer",
+              "default": 0
+            },
+            "refundAmount": {
+              "$id": "#root/data/orderInfo/refundAmount",
+              "title": "Refundamount",
+              "type": "integer",
+              "default": 0
+            },
+            "storeCode": {
+              "$id": "#root/data/orderInfo/storeCode",
+              "title": "Storecode",
+              "type": "string",
+              "default": "",
+              "pattern": "^.*$"
+            },
+            "storeName": {
+              "$id": "#root/data/orderInfo/storeName",
+              "title": "Storename",
+              "type": "string",
+              "default": "",
+              "pattern": "^.*$"
+            },
+            "subStoreName": {
+              "$id": "#root/data/orderInfo/subStoreName",
+              "title": "Substorename",
+              "type": "string",
+              "default": "",
+              "pattern": "^.*$"
+            },
+            "subject": {
+              "$id": "#root/data/orderInfo/subject",
+              "title": "Subject",
+              "type": "string",
+              "default": "",
+              "pattern": "^.*$"
+            },
+            "tempDiscountAmount": {
+              "$id": "#root/data/orderInfo/tempDiscountAmount",
+              "title": "Tempdiscountamount",
+              "type": "integer",
+              "default": 0
+            },
+            "totalAmount": {
+              "$id": "#root/data/orderInfo/totalAmount",
+              "title": "Totalamount",
+              "type": "integer",
+              "default": 0
+            },
+            "tradeType": {
+              "$id": "#root/data/orderInfo/tradeType",
+              "title": "Tradetype",
+              "type": "string",
+              "default": "",
+              "pattern": "^.*$"
+            },
+            "unDiscountableAmount": {
+              "$id": "#root/data/orderInfo/unDiscountableAmount",
+              "title": "Undiscountableamount",
+              "type": "integer",
+              "default": 0
+            },
+            "vip": {
+              "$id": "#root/data/orderInfo/vip",
+              "title": "Vip",
+              "type": "object",
+              "required": [
+                "balanceAmount",
+                "balancePoint",
+                "chargeAmount",
+                "giftAmount",
+                "vipLevelName",
+                "vipName",
+                "vipPhone"
+              ],
+              "properties": {
+                "balanceAmount": {
+                  "$id": "#root/data/orderInfo/vip/balanceAmount",
+                  "title": "Balanceamount",
+                  "type": "integer",
+                  "default": 0
+                },
+                "balancePoint": {
+                  "$id": "#root/data/orderInfo/vip/balancePoint",
+                  "title": "Balancepoint",
+                  "type": "integer",
+                  "default": 0
+                },
+                "chargeAmount": {
+                  "$id": "#root/data/orderInfo/vip/chargeAmount",
+                  "title": "Chargeamount",
+                  "type": "integer",
+                  "default": 0
+                },
+                "giftAmount": {
+                  "$id": "#root/data/orderInfo/vip/giftAmount",
+                  "title": "Giftamount",
+                  "type": "integer",
+                  "default": 0
+                },
+                "vipLevelName": {
+                  "$id": "#root/data/orderInfo/vip/vipLevelName",
+                  "title": "Viplevelname",
+                  "type": "string",
+                  "default": "",
+                  "pattern": "^.*$"
+                },
+                "vipName": {
+                  "$id": "#root/data/orderInfo/vip/vipName",
+                  "title": "Vipname",
+                  "type": "string",
+                  "default": "",
+                  "pattern": "^.*$"
+                },
+                "vipPhone": {
+                  "$id": "#root/data/orderInfo/vip/vipPhone",
+                  "title": "Vipphone",
+                  "type": "string",
+                  "default": "",
+                  "pattern": "^.*$"
+                }
+              }
+            }
+          ,
+            "vipCardNo": {
+              "$id": "#root/data/orderInfo/vipCardNo",
+              "title": "Vipcardno",
+              "type": "string",
+              "default": "",
+              "pattern": "^.*$"
+            },
+            "vipDiscountAmount": {
+              "$id": "#root/data/orderInfo/vipDiscountAmount",
+              "title": "Vipdiscountamount",
+              "type": "integer",
+              "default": 0
+            },
+            "waitPayAmount": {
+              "$id": "#root/data/orderInfo/waitPayAmount",
+              "title": "Waitpayamount",
+              "type": "integer",
+              "default": 0
+            }
+          }
+        }
+      ,
+        "goodsList": {
+          "$id": "#root/data/goodsList",
+          "title": "Goodslist",
+          "type": "array",
+          "default": [],
+          "items":{
+            "$id": "#root/data/goodsList/items",
+            "title": "Items",
+            "type": "object",
+            "required": [
+              "costPrice",
+              "discountAmount",
+              "discountPrice",
+              "id",
+              "merchantDiscountShareAmount",
+              "orderNo",
+              "productId",
+              "productName",
+              "returnGoods",
+              "saleCount",
+              "salePrice",
+              "saleUnit",
+              "skuId",
+              "skuTitle",
+              "skuType",
+              "skuVersion",
+              "temporaryGoods",
+              "totalAmount",
+              "totalAmountAfterDis"
+            ],
+            "properties": {
+              "costPrice": {
+                "$id": "#root/data/goodsList/items/costPrice",
+                "title": "Costprice",
+                "type": "integer",
+                "default": 0
+              },
+              "discountAmount": {
+                "$id": "#root/data/goodsList/items/discountAmount",
+                "title": "Discountamount",
+                "type": "integer",
+                "default": 0
+              },
+              "discountPrice": {
+                "$id": "#root/data/goodsList/items/discountPrice",
+                "title": "Discountprice",
+                "type": "boolean",
+                "default": true
+              },
+              "id": {
+                "$id": "#root/data/goodsList/items/id",
+                "title": "Id",
+                "type": "integer",
+                "default": 0
+              },
+              "merchantDiscountShareAmount": {
+                "$id": "#root/data/goodsList/items/merchantDiscountShareAmount",
+                "title": "Merchantdiscountshareamount",
+                "type": "integer",
+                "default": 0
+              },
+              "orderNo": {
+                "$id": "#root/data/goodsList/items/orderNo",
+                "title": "Orderno",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "productId": {
+                "$id": "#root/data/goodsList/items/productId",
+                "title": "Productid",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "productName": {
+                "$id": "#root/data/goodsList/items/productName",
+                "title": "Productname",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "returnGoods": {
+                "$id": "#root/data/goodsList/items/returnGoods",
+                "title": "Returngoods",
+                "type": "boolean",
+                "default": true
+              },
+              "saleCount": {
+                "$id": "#root/data/goodsList/items/saleCount",
+                "title": "Salecount",
+                "type": "integer",
+                "default": 0
+              },
+              "salePrice": {
+                "$id": "#root/data/goodsList/items/salePrice",
+                "title": "Saleprice",
+                "type": "integer",
+                "default": 0
+              },
+              "saleUnit": {
+                "$id": "#root/data/goodsList/items/saleUnit",
+                "title": "Saleunit",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "skuId": {
+                "$id": "#root/data/goodsList/items/skuId",
+                "title": "Skuid",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "skuTitle": {
+                "$id": "#root/data/goodsList/items/skuTitle",
+                "title": "Skutitle",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "skuType": {
+                "$id": "#root/data/goodsList/items/skuType",
+                "title": "Skutype",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "skuVersion": {
+                "$id": "#root/data/goodsList/items/skuVersion",
+                "title": "Skuversion",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "temporaryGoods": {
+                "$id": "#root/data/goodsList/items/temporaryGoods",
+                "title": "Temporarygoods",
+                "type": "boolean",
+                "default": true
+              },
+              "totalAmount": {
+                "$id": "#root/data/goodsList/items/totalAmount",
+                "title": "Totalamount",
+                "type": "integer",
+                "default": 0
+              },
+              "totalAmountAfterDis": {
+                "$id": "#root/data/goodsList/items/totalAmountAfterDis",
+                "title": "Totalamountafterdis",
+                "type": "integer",
+                "default": 0
+              }
+            }
+          }
+
+        },
+        "tradeList": {
+          "$id": "#root/data/tradeList",
+          "title": "Tradelist",
+          "type": "array",
+          "default": [],
+          "items":{
+            "$id": "#root/data/tradeList/items",
+            "title": "Items",
+            "type": "object",
+            "required": [
+              "appOrderNo",
+              "cashBackAmount",
+              "channelAssistDiscount",
+              "chargeGiftAmount",
+              "localOrderNo",
+              "orderStatus",
+              "outOrderNo",
+              "payChannelName",
+              "paymentChannel",
+              "refundAmount",
+              "totalAmount",
+              "tradeTime",
+              "tradeType"
+            ],
+            "properties": {
+              "appOrderNo": {
+                "$id": "#root/data/tradeList/items/appOrderNo",
+                "title": "Apporderno",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "cashBackAmount": {
+                "$id": "#root/data/tradeList/items/cashBackAmount",
+                "title": "Cashbackamount",
+                "type": "integer",
+                "default": 0
+              },
+              "channelAssistDiscount": {
+                "$id": "#root/data/tradeList/items/channelAssistDiscount",
+                "title": "Channelassistdiscount",
+                "type": "integer",
+                "default": 0
+              },
+              "chargeGiftAmount": {
+                "$id": "#root/data/tradeList/items/chargeGiftAmount",
+                "title": "Chargegiftamount",
+                "type": "integer",
+                "default": 0
+              },
+              "localOrderNo": {
+                "$id": "#root/data/tradeList/items/localOrderNo",
+                "title": "Localorderno",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "orderStatus": {
+                "$id": "#root/data/tradeList/items/orderStatus",
+                "title": "Orderstatus",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "outOrderNo": {
+                "$id": "#root/data/tradeList/items/outOrderNo",
+                "title": "Outorderno",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "payChannelName": {
+                "$id": "#root/data/tradeList/items/payChannelName",
+                "title": "Paychannelname",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "paymentChannel": {
+                "$id": "#root/data/tradeList/items/paymentChannel",
+                "title": "Paymentchannel",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              },
+              "refundAmount": {
+                "$id": "#root/data/tradeList/items/refundAmount",
+                "title": "Refundamount",
+                "type": "integer",
+                "default": 0
+              },
+              "totalAmount": {
+                "$id": "#root/data/tradeList/items/totalAmount",
+                "title": "Totalamount",
+                "type": "integer",
+                "default": 0
+              },
+              "tradeTime": {
+                "$id": "#root/data/tradeList/items/tradeTime",
+                "title": "Tradetime",
+                "type": "integer",
+                "default": 0
+              },
+              "tradeType": {
+                "$id": "#root/data/tradeList/items/tradeType",
+                "title": "Tradetype",
+                "type": "string",
+                "default": "",
+                "pattern": "^.*$"
+              }
+            }
+          }
+
+        },
+        "extraInfo": {
+          "$id": "#root/data/extraInfo",
+          "title": "Extrainfo",
+          "type": "object",
+          "properties": {
+          }
+        }
+      ,
+        "specialGoodsList": {
+          "$id": "#root/data/specialGoodsList",
+          "title": "Specialgoodslist",
+          "type": "array",
+          "default": []
+        }
+      }
+    }
+
+  }
+}

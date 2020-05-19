@@ -1,11 +1,10 @@
 package com.kaimai.cashier.testcase;
 
 import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
+import com.kaimai.cashier.api.OrderApplication;
 import com.kaimai.cashier.api.PayApplication;
 import com.kaimai.cashier.api.VipApplication;
 import io.qameta.allure.Description;
@@ -22,11 +21,9 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.stream.Stream;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
@@ -35,6 +32,7 @@ public class TestPay extends TestUser{
     static ResponseSpecification responseSpec;
     static VipApplication vip = VipApplication.getInstance();
     PayApplication pay = new PayApplication();
+    OrderApplication order = OrderApplication.getInstance();
 
 
     @BeforeAll
@@ -261,9 +259,9 @@ public class TestPay extends TestUser{
     }
 
     @Test
-    @DisplayName("会员现金支付，有商品优惠和会员优惠")
+    @DisplayName("会员现金支付，有商品优惠和会员优惠，查询订单详情")
     @Description("商品享受单品优惠和会员优惠(会员价、会员折和积分)，会员现金支付")
-    void testPayWithDiscountForEveryGoodAndPointForVip() throws JsonProcessingException {
+    void testPayWithDiscountForEveryGoodAndPointForVip(){
         HashMap<String, Object> data = new HashMap<>();
         String vipPayToken = "";
         String vipCardNo = vip.getVipCardNo();
@@ -282,9 +280,16 @@ public class TestPay extends TestUser{
         String body=template("/com/kaimai/cashier/testcase/payTemplateWithDistForEvyGoodAndPointForVip.json", data);
         JSONObject params = JSONObject.parseObject(body);
 
-        pay.payForVip(params).then().
+        String orderNo = pay.payForVip(params).then().
                 spec(responseSpec).
-                body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/paySuccessSchemaForVip.json"));
+                body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/paySuccessSchemaForVip.json")).
+                extract().path("data.orderNo");
+
+        //查询订单详情
+        order.getDetailOfOrder(orderNo).
+                then().body("result.success", equalTo(true)).
+                body("data.orderInfo.orderNo", equalTo(orderNo)).
+                body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/orderForPaySchema.json"));
     }
 
     public String template(String templatePath, HashMap<String, Object> data){

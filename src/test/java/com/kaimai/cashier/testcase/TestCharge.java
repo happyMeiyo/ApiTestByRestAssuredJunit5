@@ -109,7 +109,7 @@ public class TestCharge extends TestUser{
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(orderInfo);
 
-        assertThat("数据格式正确", json, matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/orderSchema.json"));
+        assertThat("数据格式正确", json, matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/orderForChargeSchema.json"));
     }
 
 }
