@@ -50,8 +50,7 @@ public class VipApplication extends CashierConfig {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
 
         TypeReference<HashMap<String, Object>> typeRef =
-                new TypeReference<HashMap<String, Object>>() {
-                };
+                new TypeReference<HashMap<String, Object>>(){};
         InputStream src = TestVipApplication.class.getResourceAsStream("vip.yml");
 
         try {

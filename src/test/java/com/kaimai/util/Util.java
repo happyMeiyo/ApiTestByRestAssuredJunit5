@@ -34,16 +34,18 @@ public class Util {
 
     }
 
-    public String template(String templatePath, HashMap<String, Object> data){
+    public static String template(String templatePath, HashMap<String, Object> data){
         Writer writer = new StringWriter();
         MustacheFactory mf = new DefaultMustacheFactory();
-        Mustache mustache = mf.compile(this.getClass().getResource(templatePath).getPath());
+        Mustache mustache = mf.compile(Util.class.getResource(templatePath).getPath());
         mustache.execute(writer, data);
         try {
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+//        return writer;
         return writer.toString();
     }
 }

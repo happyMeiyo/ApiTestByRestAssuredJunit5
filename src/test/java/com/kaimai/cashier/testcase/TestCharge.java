@@ -6,9 +6,7 @@ import com.kaimai.cashier.api.OrderApplication;
 import com.kaimai.cashier.api.PayApplication;
 import com.kaimai.cashier.api.VipApplication;
 import io.qameta.allure.Description;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -27,10 +25,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @DisplayName("测试会员充值相关业务")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestCharge extends TestUser{
     static VipApplication vip = VipApplication.getInstance();
     OrderApplication order = OrderApplication.getInstance();
-    PayApplication pay = new PayApplication();
+    PayApplication pay = PayApplication.getInstance();
 
     static Stream<Arguments> chargeForVipExp() {
         String vipCardNo = vip.getVipCardNo();

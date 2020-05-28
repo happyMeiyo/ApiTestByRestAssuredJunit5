@@ -1,9 +1,6 @@
 package com.kaimai.cashier.testcase;
 
 import com.alibaba.fastjson.JSONObject;
-import com.github.mustachejava.DefaultMustacheFactory;
-import com.github.mustachejava.Mustache;
-import com.github.mustachejava.MustacheFactory;
 import com.kaimai.cashier.api.OrderApplication;
 import com.kaimai.cashier.api.PayApplication;
 import com.kaimai.cashier.api.VipApplication;
@@ -17,21 +14,19 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
 import java.util.HashMap;
 import java.util.stream.Stream;
 
+import static com.kaimai.util.Util.template;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-@DisplayName("支付相关业务测试")
+@DisplayName("测试商品收款相关业务")
 public class TestPay extends TestUser{
     static ResponseSpecification responseSpec;
     static VipApplication vip = VipApplication.getInstance();
-    PayApplication pay = new PayApplication();
+    PayApplication pay = PayApplication.getInstance();
     OrderApplication order = OrderApplication.getInstance();
 
 
@@ -73,8 +68,7 @@ public class TestPay extends TestUser{
         data.put("payAmount", payAmount);
         data.put("totalAmount", totalAmount);
 
-        String body=template("/com/kaimai/cashier/testcase/payTemplateForExp.json", data);
-        System.out.println(body);
+        String body=template("/com/kaimai/cashier/testcase/payTemplateForExp.Json", data);
         JSONObject params = JSONObject.parseObject(body);
 
         pay.pay(params).
@@ -107,7 +101,7 @@ public class TestPay extends TestUser{
         //支付方式是现金
         data.put("paymentChannel", "CASH");
         data.put("channelId", "4");
-        String body=template("/com/kaimai/cashier/testcase/payTemplateWithDiscountForCategory.json", data);
+        String body=template("/com/kaimai/cashier/testcase/payTemplateWithDiscountForCategory.Json", data);
         JSONObject params = JSONObject.parseObject(body);
         pay.pay(params).then().
                 spec(responseSpec).
@@ -152,7 +146,7 @@ public class TestPay extends TestUser{
         //支付方式是记账，银行卡
         data.put("paymentChannel", "ACCOUNTING");
         data.put("channelId", "48");
-        String body=template("/com/kaimai/cashier/testcase/payTemplateWithDiscountForEveryGoodAndOrder.json", data);
+        String body=template("/com/kaimai/cashier/testcase/payTemplateWithDiscountForEveryGoodAndOrder.Json", data);
         JSONObject params = JSONObject.parseObject(body);
 
         pay.pay(params).then().
@@ -168,7 +162,7 @@ public class TestPay extends TestUser{
         //支付方式是现金
         data.put("paymentChannel", "CASH");
         data.put("channelId", "4");
-        String body=template("/com/kaimai/cashier/testcase/payTemplateWithDiscountForGoodsAndOrder.json", data);
+        String body=template("/com/kaimai/cashier/testcase/payTemplateWithDiscountForGoodsAndOrder.Json", data);
         JSONObject params = JSONObject.parseObject(body);
 
         pay.payWithDiscountForOrder(params).then().
@@ -196,7 +190,7 @@ public class TestPay extends TestUser{
         data.put("vipCardNo", vipCardNo);
         data.put("vipPayToken", vipPayToken);
 
-        String body=template("/com/kaimai/cashier/testcase/payTemplateForVip.json", data);
+        String body=template("/com/kaimai/cashier/testcase/payTemplateForVip.Json", data);
         JSONObject params = JSONObject.parseObject(body);
 
         pay.payForVip(params).then().
@@ -292,20 +286,8 @@ public class TestPay extends TestUser{
                 body(matchesJsonSchemaInClasspath("com/kaimai/cashier/testcase/orderForPaySchema.json"));
     }
 
-    public String template(String templatePath, HashMap<String, Object> data){
-        Writer writer = new StringWriter();
-        MustacheFactory mf = new DefaultMustacheFactory();
-        Mustache mustache = mf.compile(this.getClass().getResource(templatePath).getPath());
-        mustache.execute(writer, data);
-        try {
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-//        return writer;
-        return writer.toString();
-    }
-
     // TODO: 2020/5/19 接口v1/vip/promotion/check/v2 和 /v1/vip/promotion/point进行接口测试
+
+
+
 }

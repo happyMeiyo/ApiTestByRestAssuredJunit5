@@ -89,7 +89,7 @@ public class TestOrder extends TestUser{
     @Description("测试获取订单详情异常情况")
     @NullAndEmptySource
     void testDetailOfOrderExp(String orderNo) {
-       order.getDetailOfOrder(orderNo).
+        order.getDetailOfOrder(orderNo).
                 then().body("result.success", equalTo(false));
     }
 
