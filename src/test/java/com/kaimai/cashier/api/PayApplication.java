@@ -3,11 +3,23 @@ package com.kaimai.cashier.api;
 import com.kaimai.cashier.common.CashierConfig;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+
+
+import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
 public class PayApplication extends CashierConfig {
+    private static PayApplication pay;
+
+    public static PayApplication getInstance() {
+        if (pay == null) {
+            pay = new PayApplication();
+        }
+        return pay;
+    }
+
     @Step("会员充值")
     public Response chargeForVip(String vipCardNo, String channel, Integer payAmount, Integer totalAmount) {
         return given().
@@ -38,9 +50,9 @@ public class PayApplication extends CashierConfig {
                     formParam("totalDiscountAmount", String.valueOf(params.get("totalDiscountAmount"))).
                     formParam("clientOrderNo", String.valueOf(params.get("clientOrderNo"))).
                     formParam("totalAmount", String.valueOf(params.get("totalAmount"))).
-                when().log().all().
+                when().
                     post("/v2/pay/nowaitpay").
-                then().log().all().
+                then().
                     extract().response();
     }
 
@@ -62,9 +74,9 @@ public class PayApplication extends CashierConfig {
                     formParam("totalDiscountAmount", String.valueOf(params.get("totalDiscountAmount"))).
                     formParam("clientOrderNo", String.valueOf(params.get("clientOrderNo"))).
                     formParam("totalAmount", String.valueOf(params.get("totalAmount"))).
-                when().log().all().
+                when().
                     post("/v2/pay/nowaitpay").
-                then().log().all().
+                then().
                     extract().response();
     }
 
@@ -87,9 +99,39 @@ public class PayApplication extends CashierConfig {
                     formParam("totalDiscountAmount", String.valueOf(params.get("totalDiscountAmount"))).
                     formParam("clientOrderNo", String.valueOf(params.get("clientOrderNo"))).
                     formParam("totalAmount", String.valueOf(params.get("totalAmount"))).
-                when().log().all().
+                when().
                     post("/v2/pay/nowaitpay").
-                then().log().all().
+                then().
+                    extract().response();
+    }
+
+
+    @Step("获取应退款的支付列表")
+    public Response getRefundListForPays(Map<String, Object> params) {
+        return given().
+                    formParam("orderNo", String.valueOf(params.get("orderNo"))).
+                    formParam("refundAmount", String.valueOf(params.get("refundAmount"))).
+                when().
+                    post("/v1/order/refund/pays").
+                then().
+                    extract().response();
+    }
+
+    @Step("退款")
+    public Response refund(HashMap<String, Object> params) {
+        return given().
+                    formParam("orderNo", String.valueOf(params.get("orderNo"))).
+                    formParam("refundAmount", String.valueOf(params.getOrDefault("refundAmount", 0))).
+                    formParam("returnGoods", String.valueOf(params.getOrDefault("returnGoods", false))).
+                    formParam("operatePwd", String.valueOf(params.getOrDefault("operatePwd", "123456"))).
+                    formParam("paysDetail", String.valueOf(params.getOrDefault("paysDetail", ""))).
+                    formParam("goodsDetail", String.valueOf(params.getOrDefault("goodsDetail", ""))).
+                    formParam("storeManagerUserId", String.valueOf(params.getOrDefault("storeManagerUserId", ""))).
+                    formParam("refundDiscountAmount", String.valueOf(params.getOrDefault("refundDiscountAmount", 0))).
+                    formParam("refundTotalAmount", String.valueOf(params.getOrDefault("refundTotalAmount", 0))).
+                when().
+                    post("/v1/order/refund").
+                then().
                     extract().response();
     }
 }
