@@ -6,7 +6,7 @@ pipeline {
 				//Wait 2 minutes
 				sleep(time: 2, unit: 'MINUTES')
 				// Get some code from a GitHub repository
-				git(url: 'git@gitlab.caibaopay.com:dengmingyao/ApiTestForKaimaiCashier.git', branch: 'master', changelog: true, credentialsId: '6a944868-6bf7-445e-aa78-94b233e043e4')
+				git(url: 'git@*****.git', branch: 'master', changelog: true, credentialsId: '**')
 			}
 		}
 
