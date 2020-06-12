@@ -23,10 +23,8 @@ public class TestUser {
         if (userLoginRsp.getStatusCode() == 200) {
             boolean success = userLoginRsp.getBody().jsonPath().get("result.success");
             if (success) {
-                String token = userLoginRsp.then().
-                        extract().path("data.accessToken");
-                Integer userId = userLoginRsp.then().
-                        extract().path("data.userId");
+                String token = userLoginRsp.getBody().jsonPath().get("data.accessToken");
+                Integer userId = userLoginRsp.getBody().jsonPath().get("data.userId");
                 //使用Filter方法，在请求中添加cookie
 //                RestAssured.filters((req, res, ctx) -> {
 //                    //请求头中添加Cookie

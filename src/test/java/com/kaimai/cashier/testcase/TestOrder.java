@@ -77,7 +77,7 @@ public class TestOrder extends TestUser{
         String endTime = format.format(calendar.getTime());
 
         calendar.set(Calendar.DAY_OF_MONTH,1);
-        calendar.add(Calendar.DAY_OF_MONTH,-31);
+        calendar.add(Calendar.DAY_OF_MONTH,-32);
         String startTime =format.format(calendar.getTime());
 
         order.getListOfOrders(startTime, endTime).

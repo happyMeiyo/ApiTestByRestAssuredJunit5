@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.kaimai.cashier.common.CashierConfig;
-import com.kaimai.cashier.testcase.TestVipApplication;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
@@ -51,7 +50,7 @@ public class VipApplication extends CashierConfig {
 
         TypeReference<HashMap<String, Object>> typeRef =
                 new TypeReference<HashMap<String, Object>>(){};
-        InputStream src = TestVipApplication.class.getResourceAsStream("vip.yml");
+        InputStream src = VipApplication.class.getResourceAsStream("vip.yml");
 
         try {
             HashMap<String, Object> VipInfo = mapper.readValue(src, typeRef);
@@ -120,9 +119,9 @@ public class VipApplication extends CashierConfig {
                     formParam("vipCardNo", vipCardNo).
                     formParam("pageNumber", pageNumber).
                     formParam("pageSize", pageSize).
-                when().
+                when().log().all().
                     post("/v1/vip/point/record/list").
-                then().
+                then().log().all().
                     extract().response();
     }
 
