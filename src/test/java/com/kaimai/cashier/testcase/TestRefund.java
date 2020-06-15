@@ -3,8 +3,8 @@ package com.kaimai.cashier.testcase;
 import com.alibaba.fastjson.JSONObject;
 import com.kaimai.cashier.api.OrderApplication;
 import com.kaimai.cashier.api.PayApplication;
+import com.kaimai.cashier.api.UserLogin;
 import com.kaimai.cashier.api.VipApplication;
-import com.kaimai.cashier.common.User;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import static com.kaimai.util.Util.template;
+import static com.kaimai.cashier.common.Util.template;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
@@ -26,7 +26,7 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 @DisplayName("测试退款相关业务")
 public class TestRefund extends TestUser{
     static PayApplication pay = PayApplication.getInstance();
-    static User cashier = User.getInstance();
+    static UserLogin cashier = UserLogin.getInstance();
     OrderApplication order = OrderApplication.getInstance();
     static VipApplication vip = VipApplication.getInstance();
 

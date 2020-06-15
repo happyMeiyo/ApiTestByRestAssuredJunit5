@@ -11,12 +11,12 @@ import static org.hamcrest.Matchers.equalTo;
 
 @DisplayName("测试用户登录相关业务")
 public class TestUserLogin {
+    UserLogin ul = UserLogin.getInstance();
 
     @Test
     @Description("测试用户登录成功")
     @DisplayName("用户登录成功")
     void testUserLoginSuccess() {
-        UserLogin ul = new UserLogin();
         ul.userLoginSuccess().then().body("result.success", equalTo(true));
         ul.userLogout().then().body("result.success", equalTo(true));
     }
@@ -30,7 +30,6 @@ public class TestUserLogin {
             "100457, qing, 123456, USER_LOGIN_PWD_ERROR"
     })
     void testUserLoginFailure(String merchantCode, String username, String password, String errorCode) {
-        UserLogin ul = new UserLogin();
         ul.userLoginFailure(merchantCode, username, password).then().
                 body("result.errorCode", equalTo(errorCode)).
                 body("result.confirm", equalTo(false));

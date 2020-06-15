@@ -38,7 +38,6 @@ public class TestUser {
                 reqBuilder.addHeader("Cookie", String.format("hsAccessToken=%s", token));
                 RestAssured.requestSpecification = reqBuilder.build();
 
-                ul.setToken(token);
                 ul.setUserId(userId);
             }
             //响应消息的基础判断

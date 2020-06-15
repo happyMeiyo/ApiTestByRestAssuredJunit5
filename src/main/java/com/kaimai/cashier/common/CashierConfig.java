@@ -31,6 +31,7 @@ public class CashierConfig {
 
             RestAssured.baseURI = envInfo.getOrDefault("URI", "http://gw3.daily.heyean.com").toString();
             RestAssured.basePath = envInfo.getOrDefault("basePath", "/cashier").toString();
+
         }
         catch (Exception ex){
             ex.printStackTrace();
